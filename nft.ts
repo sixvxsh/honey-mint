@@ -14,13 +14,29 @@ import * as fs from "fs"
 
 
 const rawData = fs.readFileSync('twonft.json');
-// const metadata = JSON.parse(rawData.toString());
-
-
-
-console.log('metadata before parsing:\n', rawData.toString())
 const metadata = JSON.parse(rawData.toString());
-console.log('metadata after parsing:\n', metadata)
+
+
+// for(let i = 0; i < metadata.length; i++) {
+//   console.log('metadata-name', metadata[i].name);
+//   console.log('metadata.symbol', metadata[i].symbol,);
+//   console.log('metadata.description', metadata[0]['json']['description']);
+//   console.log('metadata.sellerFeeBasisPoints', metadata[0]['json']['seller_fee_basis_points']);
+//   console.log('metadata.uri', metadata[i].uri,);
+//   console.log('metadata.tokenStandard', metadata[i].tokenStandard,);
+//   console.log('metadata.isMutable', metadata[i].isMutable,);
+//   console.log('metadata.primarySaleHappened', metadata[i].primarySaleHappened,);
+//   console.log('metadata.maxSupply', metadata[0]['edition']['maxSupply']);
+//   console.log('metadata.isCollection', true);
+//   console.log('metadata.collection',true);
+//   console.log('collectionAuthority', true);
+//   // console.log('mintTokens', Keypair.generate());
+//   console.log('metadata.collectionIsSized', true);
+// }
+
+// console.log('metadata before parsing:\n', rawData.toString())
+// const metadata = JSON.parse(rawData.toString());
+// console.log('metadata after parsing:\n', metadata)
 
 
 
@@ -52,22 +68,22 @@ interface CollectionNftData {
   
 
 
-const nftData = {
-    name: metadata.name,
-    symbol: metadata.symbol,
-    description: metadata.description,
-    sellerFeeBasisPoints: metadata.sellerFeeBasisPoints,
-    uri: metadata.uri,
-    tokenStandard: metadata.tokenStandard,
-    isMutable: metadata.isMutable,
-    primarySaleHappened: metadata.primarySaleHappened,
-    maxSupply: metadata.maxSupply,
-    isCollection: metadata.isCollection,
-    collection: metadata.collection,
+let nftData = {
+    name: metadata[i].name,
+    symbol: metadata[i].symbol,
+    description: metadata[i]['json']['description'],
+    sellerFeeBasisPoints: metadata[i]['json']['seller_fee_basis_points'],
+    uri: metadata[i].uri,
+    tokenStandard: metadata[i].tokenStandard,
+    isMutable: metadata[i].isMutable,
+    primarySaleHappened: metadata[i].primarySaleHappened,
+    maxSupply: metadata[i]['edition']['maxSupply'],
+    isCollection: true,
+    collection: metadata[i]['json']['collection'],
     mintTokens: true,
     collectionAuthority: Keypair.generate(),
-    collectionIsSized: metadata.collectionIsSized,
-  }
+    collectionIsSized: true,
+}
 
 
 
@@ -167,13 +183,13 @@ async function main() {
       collectionNftData
     )
   
-    const nfturi = metadata.uri;
+    // const nfturi = metadata.uri;
   
     // create an NFT using the helper function and the URI from the metadata
     for(let i = 0; i < metadata.length; i++) {
       const nft = await createNft(
         metaplex,
-        metadata.uri,
+        metadata[0].uri,
         nftData,
         collectionNft.mint.address
       )
