@@ -1,6 +1,5 @@
 import { initializeKeypair } from "./initialize"
-// import  * as originalmeta  from "./twonft.json"
-import { Connection, clusterApiUrl, PublicKey, Signer, Keypair } from "@solana/web3.js"
+import { Connection,clusterApiUrl, PublicKey, Signer, Keypair, LAMPORTS_PER_SOL } from "@solana/web3.js"
 import {
   Metaplex,
   keypairIdentity,
@@ -12,197 +11,164 @@ import {
 import * as fs from "fs"
 
 
+const connection = new Connection(clusterApiUrl('devnet'), 'confirmed');
+
+
+const owner = await initializeKeypair(connection);
+console.log('owner publickey:' , owner.publicKey.toBase58());
+
+
+
+const metaplex = Metaplex.make(connection).use(keypairIdentity(owner,)).use(bundlrStorage({
+  address: "https://devnet.bundlr.network",
+  providerUrl: "https://api.devnet.solana.com",
+  timeout: 6000,
+}))
+
 
 const rawData = fs.readFileSync('twonft.json');
 const metadata = JSON.parse(rawData.toString());
 
 
-// for(let i = 0; i < metadata.length; i++) {
-//   console.log('metadata-name', metadata[i].name);
-//   console.log('metadata.symbol', metadata[i].symbol,);
-//   console.log('metadata.description', metadata[0]['json']['description']);
-//   console.log('metadata.sellerFeeBasisPoints', metadata[0]['json']['seller_fee_basis_points']);
-//   console.log('metadata.uri', metadata[i].uri,);
-//   console.log('metadata.tokenStandard', metadata[i].tokenStandard,);
-//   console.log('metadata.isMutable', metadata[i].isMutable,);
-//   console.log('metadata.primarySaleHappened', metadata[i].primarySaleHappened,);
-//   console.log('metadata.maxSupply', metadata[0]['edition']['maxSupply']);
-//   console.log('metadata.isCollection', true);
-//   console.log('metadata.collection',true);
-//   console.log('collectionAuthority', true);
-//   // console.log('mintTokens', Keypair.generate());
-//   console.log('metadata.collectionIsSized', true);
+// const collectionUpdateAuthority = Keypair.generate();
+// console.log('colluppA publickey:' , collectionUpdateAuthority.publicKey.toBase58());
+// const mint = Keypair.generate();
+// console.log('mint publickey:' , mint.publicKey.toBase58());
+// const collection = Keypair.generate();
+// console.log('collection publickey:' , collection.publicKey.toBase58());
+
+
+
+
+// const nft = "9GCJNKorPdTuPrRefpcsrQ9o3g6XoK5Wtbzbuqx4rsxe";
+
+// // unverify collection nft
+// await metaplex.nfts().unverifyCollection(
+//   {
+//     mintAddress: new PublicKey("9GCJNKorPdTuPrRefpcsrQ9o3g6XoK5Wtbzbuqx4rsxe") ,
+//     collectionMintAddress: new PublicKey ('8ujipTijc7DD1R3fCHdYoP72gFWt1Mnm2iw5KEEn9RZQ') ,
+//     collectionAuthority: owner,
+//   }
+// );
+
+// console.log('unverified');
+
+
+
+
+
+await metaplex.nfts().verifyCollection(
+  {
+    mintAddress: new PublicKey("9GCJNKorPdTuPrRefpcsrQ9o3g6XoK5Wtbzbuqx4rsxe"),
+    collectionMintAddress: new PublicKey("FWeLsxpT5gn9HRjPpNh73qJ8RFnH47d3rVss9vb35BUA"),
+    isSizedCollection: true,
+  }
+)
+console.log("NFT COLLECTION VERIFIED");
+
+
+
+
+
+
+// create new collection
+// const {nft} = await metaplex.nfts().create(
+//   {
+//     uri:"https://content.honey.land/assets/collections/honeyland_passes.json",
+//     name:"Honeyland Passes2",
+//     sellerFeeBasisPoints: 500,
+//     symbol: "HL_PASS2",
+//     isCollection: true,
+//     collectionIsSized: true,
+//   }
+// );
+// console.log(
+//   `collection Mint: https://explorer.solana.com/address/${nft.address.toString()}?cluster=devnet`);
+// console.log(`collection mint address: ${nft.mint.address}`);
+// const collectionNft = nft.mint.address;
+
+
+
+// updating existing nft
+// const nft_address = new PublicKey("9GCJNKorPdTuPrRefpcsrQ9o3g6XoK5Wtbzbuqx4rsxe");
+// const NFT = await metaplex.nfts().findByMint({mintAddress:nft_address});
+
+// await metaplex.nfts().update(
+//   {
+//     uri: "https://storage.googleapis.com/fractal-launchpad-public-assets/honeyland/assets_gold_pass/57.json",
+//     nftOrSft: NFT,
+//     collection: collectionNft,
+//     authority: owner,
+
+//   }
+// );
+// console.log(
+  // `Token Mint: https://explorer.solana.com/address/${nft.address.toString()}?cluster=devnet`);
+// console.log("NFT COLLECTION WAS UPDATED");
+
+
+
+
+
+
+
+
+// creating collection nft 
+// const { nft } = await metaplex.nfts().create(
+//   {
+//     uri: "https://content.honey.land/assets/collections/honeyland_passes.json",
+//     name: "Honeyland Passes",
+//     sellerFeeBasisPoints: 500,
+//     symbol: "HL_PASS",
+//     isCollection: true,
+//     collectionIsSized: true,
+//   },
+// );
+// console.log(
+//   `collection Mint: https://explorer.solana.com/address/${nft.address.toString()}?cluster=devnet`);
+// console.log(`${nft.mint.address}`);
+// const collectionNft = nft.mint.address;
+
+
+
+
+
+
+
+
+
+// creating new nft with metadata
+// for (let i = 0; i < metadata.length; i++ ) {
+//   const {nft} = await metaplex.nfts().create(
+//     {
+//       uri: metadata[i].uri, // metadata URI(off-chain)
+//       name: metadata[i].name,
+//       symbol: metadata[i].symbol,
+//       sellerFeeBasisPoints: metadata[i]['json']['seller_fee_basis_points'],
+//       tokenStandard: metadata[i].tokenStandard,
+//       isMutable: metadata[i].isMutable,
+//       primarySaleHappened: metadata[i].primarySaleHappened,
+//       maxSupply: metadata[i]['edition']['maxSupply'],
+//       collection: collectionNft,
+//       mintTokens: true,
+//     }
+//   );
+//   await metaplex.nfts().verifyCollection(
+//     {
+//       mintAddress: nft.mint.address,
+//       collectionMintAddress: collectionNft,
+//       isSizedCollection: true,
+//     }
+//   );  
+//   console.log(
+//     `Token Mint: https://explorer.solana.com/address/${nft.address.toString()}?cluster=devnet`);
+//   console.log(`nft mint address: ${nft.mint.address}`)
 // }
 
-// console.log('metadata before parsing:\n', rawData.toString())
-// const metadata = JSON.parse(rawData.toString());
-// console.log('metadata after parsing:\n', metadata)
 
 
 
 
-interface NftData {
-    name: string
-    symbol: string
-    description: string
-    sellerFeeBasisPoints: number
-    uri: string 
-    tokenStandard: number
-    isMutable: boolean
-    primarySaleHappened: boolean
-    maxSupply: BigNumber 
-    isCollection: boolean
-    collection: PublicKey
-    collectionAuthority: Signer
-    collectionIsSized: boolean
-}
-  
-interface CollectionNftData {
-    name: string
-    symbol: string
-    description: string
-    sellerFeeBasisPoints: number
-    isCollection: boolean
-    collectionAuthority: Signer
-  }
-  
-
-
-let nftData = {
-    name: metadata[i].name,
-    symbol: metadata[i].symbol,
-    description: metadata[i]['json']['description'],
-    sellerFeeBasisPoints: metadata[i]['json']['seller_fee_basis_points'],
-    uri: metadata[i].uri,
-    tokenStandard: metadata[i].tokenStandard,
-    isMutable: metadata[i].isMutable,
-    primarySaleHappened: metadata[i].primarySaleHappened,
-    maxSupply: metadata[i]['edition']['maxSupply'],
-    isCollection: true,
-    collection: metadata[i]['json']['collection'],
-    mintTokens: true,
-    collectionAuthority: Keypair.generate(),
-    collectionIsSized: true,
-}
 
 
 
-async function createNft(
-    metaplex: Metaplex,
-    uri: string,
-    nftData: NftData,
-    collectionMint: PublicKey
-  ): Promise<NftWithToken> {
-    const { nft } = await metaplex.nfts().create(
-      {
-        uri: nftData.uri, // metadata URI(off-chain)
-        name: nftData.name,
-        sellerFeeBasisPoints: nftData.sellerFeeBasisPoints,
-        symbol: nftData.symbol,
-        collection: collectionMint,
-      },
-      { commitment: "finalized" }
-    )
-  
-    console.log(
-      `Token Mint: https://explorer.solana.com/address/${nft.address.toString()}?cluster=devnet`
-    )
-  
-    await metaplex.nfts().verifyCollection({
-      //this is what verifies our collection as a Certified Collection
-      mintAddress: nft.mint.address,
-      collectionMintAddress: collectionMint, 
-      isSizedCollection: true,
-    })
-  
-    return nft
-}
-
-
-async function createCollectionNft(
-    metaplex: Metaplex,
-    uri: string,
-    data: CollectionNftData
-  ): Promise<NftWithToken> {
-    const { nft } = await metaplex.nfts().create(
-      {
-        uri: "https://content.honey.land/assets/collections/honeyland_passes.json",
-        name: data.name,
-        sellerFeeBasisPoints: data.sellerFeeBasisPoints,
-        symbol: data.symbol,
-        isCollection: true,
-      },
-      { commitment: "finalized" }
-    )
-  
-    console.log(
-      `Collection Mint: https://explorer.solana.com/address/${nft.address.toString()}?cluster=devnet`
-    )
-  
-    return nft
-}
-
-
-async function main() {
-    // create a new connection to the cluster's API
-    const connection = new Connection(clusterApiUrl("devnet"))
-  
-    // initialize a keypair for the user
-    const user = await initializeKeypair(connection)
-  
-    console.log("PublicKey:", user.publicKey.toBase58())
-  
-    // metaplex set up
-    const metaplex = Metaplex.make(connection)
-      .use(keypairIdentity(user))
-      .use(
-        bundlrStorage({
-          address: "https://devnet.bundlr.network",
-          providerUrl: "https://api.devnet.solana.com",
-          timeout: 60000,
-        })
-      )
-  
-    const collectionNftData = {
-      name: "Honeyland Passes",
-      symbol: "HL_PASS",
-      description: "Gold, Rose Gold, Platinum, & Diamond Passes are the highest honor in the Swarm and are reserved for diamond-handed legends. Holders will get in-game and IRL rewards.",
-      sellerFeeBasisPoints: 500,
-      imageFile: "honeyland_passes.png",
-      isCollection: true,
-      collectionAuthority: user,
-    }
-  
-    // upload data for the collection NFT and get the URI for the metadata
-    const collectionUri = "https://content.honey.land/assets/collections/honeyland_passes.json"
-  
-    // create a collection NFT using the helper function and the URI from the metadata
-    const collectionNft = await createCollectionNft(
-      metaplex,
-      collectionUri,
-      collectionNftData
-    )
-  
-    // const nfturi = metadata.uri;
-  
-    // create an NFT using the helper function and the URI from the metadata
-    for(let i = 0; i < metadata.length; i++) {
-      const nft = await createNft(
-        metaplex,
-        metadata[0].uri,
-        nftData,
-        collectionNft.mint.address
-      )
-    }
-};
-
-
-main()
-  .then(() => {
-    console.log("Finished successfully")
-    process.exit(0)
-  })
-  .catch((error) => {
-    console.log(error)
-    process.exit(1)
-  })
