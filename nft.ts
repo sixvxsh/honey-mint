@@ -42,10 +42,10 @@ const metadata = JSON.parse(rawData.toString());
 
 // const nft = "9GCJNKorPdTuPrRefpcsrQ9o3g6XoK5Wtbzbuqx4rsxe";
 
-// // unverify collection nft
+// unverify collection nft
 // await metaplex.nfts().unverifyCollection(
 //   {
-//     mintAddress: new PublicKey("9GCJNKorPdTuPrRefpcsrQ9o3g6XoK5Wtbzbuqx4rsxe") ,
+//     mintAddress: new PublicKey("37KpehJKubaxq9GNBA62Czdmu84w9VNQ9c3Rx8UKLzLp") ,
 //     collectionMintAddress: new PublicKey ('8ujipTijc7DD1R3fCHdYoP72gFWt1Mnm2iw5KEEn9RZQ') ,
 //     collectionAuthority: owner,
 //   }
@@ -57,14 +57,14 @@ const metadata = JSON.parse(rawData.toString());
 
 
 
-await metaplex.nfts().verifyCollection(
-  {
-    mintAddress: new PublicKey("9GCJNKorPdTuPrRefpcsrQ9o3g6XoK5Wtbzbuqx4rsxe"),
-    collectionMintAddress: new PublicKey("FWeLsxpT5gn9HRjPpNh73qJ8RFnH47d3rVss9vb35BUA"),
-    isSizedCollection: true,
-  }
-)
-console.log("NFT COLLECTION VERIFIED");
+// await metaplex.nfts().verifyCollection(
+//   {
+//     mintAddress: new PublicKey("37KpehJKubaxq9GNBA62Czdmu84w9VNQ9c3Rx8UKLzLp"),
+//     collectionMintAddress: new PublicKey("FWeLsxpT5gn9HRjPpNh73qJ8RFnH47d3rVss9vb35BUA"),
+//     isSizedCollection: true,
+//   }
+// )
+// console.log("NFT COLLECTION VERIFIED");
 
 
 
@@ -90,21 +90,22 @@ console.log("NFT COLLECTION VERIFIED");
 
 
 // updating existing nft
-// const nft_address = new PublicKey("9GCJNKorPdTuPrRefpcsrQ9o3g6XoK5Wtbzbuqx4rsxe");
-// const NFT = await metaplex.nfts().findByMint({mintAddress:nft_address});
+const nft_address = new PublicKey("37KpehJKubaxq9GNBA62Czdmu84w9VNQ9c3Rx8UKLzLp");
+const NFT = await metaplex.nfts().findByMint({mintAddress:nft_address});
 
-// await metaplex.nfts().update(
-//   {
-//     uri: "https://storage.googleapis.com/fractal-launchpad-public-assets/honeyland/assets_gold_pass/57.json",
-//     nftOrSft: NFT,
-//     collection: collectionNft,
-//     authority: owner,
+await metaplex.nfts().update(
+  {
+    uri: "https://storage.googleapis.com/fractal-launchpad-public-assets/honeyland/assets_gold_pass/121.json",
+    nftOrSft: NFT,
+    newUpdateAuthority: new PublicKey("Av636SfEEBBmrn5UYMH67TLQredoBMoCxnPyJzc6xdSd"),
+    // collection: new PublicKey("FWeLsxpT5gn9HRjPpNh73qJ8RFnH47d3rVss9vb35BUA"),
+    authority: owner,
 
-//   }
-// );
+  }
+);
 // console.log(
-  // `Token Mint: https://explorer.solana.com/address/${nft.address.toString()}?cluster=devnet`);
-// console.log("NFT COLLECTION WAS UPDATED");
+//   `Token Mint: https://explorer.solana.com/address/${nft.address.toString()}?cluster=devnet`);
+console.log("NFT COLLECTION WAS UPDATED");
 
 
 

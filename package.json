@@ -13,5 +13,9 @@
   "devDependencies": {
     "ts-node": "^10.9.1",
     "tsconfig-paths": "^4.1.2"
+  },
+  "dependencies": {
+    "@metaplex-foundation/js": "^0.18.3",
+    "dotenv": "^16.0.3"
   }
 }
