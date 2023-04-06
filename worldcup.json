@@ -1,0 +1,27 @@
+{
+    "name": "2022 Honeyland World Cup Champion",
+    "symbol": "HL_LGND",
+    "description": " An NFT award given to the Champion of the 2022 Honeyland World Cup pick 'em tournament",
+    "image": "https://content.honey.land/images/legends/awards/worldcup.jpg",
+    "external_url": "https://honey.land",
+    "attributes": [
+      { "trait_type": "Type", "value": "Award" },
+      { "trait_type": "Size", "value": "1 of 1" }
+    ],
+    "collection": { "name": "Honeyland Legends", "family": "Legends" },
+    "properties": {
+      "files": [
+        {
+          "uri": "https://content.honey.land/images/legends/awards/worldcup.jpg",
+          "type": "image/png"
+        }
+      ],
+      "category": "image",
+      "creators": [
+        {
+          "address": "C2gyWTyDz6CK822hLvCMKZ5MBQRkEFjcaF8UoERrYAvy",
+          "share": 100
+        }
+      ]
+    }
+  }

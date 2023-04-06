@@ -63,22 +63,22 @@ const metadata = JSON.parse(rawData.toString());
 
 
 // updating existing nft
-// const nft_address = new PublicKey("37KpehJKubaxq9GNBA62Czdmu84w9VNQ9c3Rx8UKLzLp");
-// const NFT = await metaplex.nfts().findByMint({mintAddress:nft_address});
+const nft_address = new PublicKey("3VLfZuWLktVPHoHocutVtr5vw8qkc8Lz1d1cUC4ZkKXQ");
+const NFT = await metaplex.nfts().findByMint({mintAddress:nft_address});
 
-// await metaplex.nfts().update(
-//   {
-//     uri: "https://storage.googleapis.com/fractal-launchpad-public-assets/honeyland/assets_gold_pass/121.json",
-//     nftOrSft: NFT,
-//     newUpdateAuthority: new PublicKey("Av636SfEEBBmrn5UYMH67TLQredoBMoCxnPyJzc6xdSd"),
-//     // collection: new PublicKey("FWeLsxpT5gn9HRjPpNh73qJ8RFnH47d3rVss9vb35BUA"),
-//     // authority: owner,
+await metaplex.nfts().update(
+  {
+    uri: "https://content.honey.land/assets/legends/awards/worldcup.json",
+    nftOrSft: NFT,
+    // newUpdateAuthority: new PublicKey("Av636SfEEBBmrn5UYMH67TLQredoBMoCxnPyJzc6xdSd"),
+    // collection: new PublicKey("FWeLsxpT5gn9HRjPpNh73qJ8RFnH47d3rVss9vb35BUA"),
+    // authority: owner,
 
-//   }
-// );
+  }
+);
 // console.log(
-//   `Token Mint: https://explorer.solana.com/address/${nft.address.toString()}?cluster=devnet`);
-// console.log("NFT COLLECTION WAS UPDATED");
+  // `Token Mint: https://explorer.solana.com/address/${nft.address.toString()}?cluster=devnet`);
+console.log("NFT COLLECTION WAS UPDATED");
 
 
 
@@ -148,38 +148,91 @@ const metadata = JSON.parse(rawData.toString());
 
 
 // creating new nft with metadata
-for (let i = 0; i < metadata.length; i++ ) {
-  const {nft} = await metaplex.nfts().create(
-    {
-      uri: metadata[i].uri, // metadata URI(off-chain)
-      name: metadata[i].name,
-      symbol: metadata[i].symbol,
-      // sellerFeeBasisPoints: metadata[i]['json']['seller_fee_basis_points']
-      sellerFeeBasisPoints: 500, 
-      tokenStandard: metadata[i].tokenStandard,
-      isMutable: metadata[i].isMutable,
-      primarySaleHappened: metadata[i].primarySaleHappened,
-      maxSupply: metadata[i]['edition']['maxSupply'],
-      collection: new PublicKey("5gCu1LdgCmwMjdNHfhGnWV3smrwNJGK85dT5EHN3djtd"),
-      mintTokens: true,
-    }
-  );
-  await metaplex.nfts().verifyCollection(
-    {
-      mintAddress: nft.mint.address,
-      collectionMintAddress: new PublicKey("5gCu1LdgCmwMjdNHfhGnWV3smrwNJGK85dT5EHN3djtd"),
-      isSizedCollection: true,
-    }
-  );  
-  console.log(
-    `Token Mint: https://explorer.solana.com/address/${nft.address.toString()}?cluster=devnet`);
-  // console.log(`nft mint address: ${nft.mint.address}`)
-}
+// for (let i = 0; i < metadata.length; i++ ) {
+//   const {nft} = await metaplex.nfts().create(
+//     {
+//       uri: metadata[i].uri, // metadata URI(off-chain)
+//       name: metadata[i].name,
+//       symbol: metadata[i].symbol,
+//       // sellerFeeBasisPoints: metadata[i]['json']['seller_fee_basis_points']
+//       sellerFeeBasisPoints: 500, 
+//       tokenStandard: metadata[i].tokenStandard,
+//       isMutable: metadata[i].isMutable,
+//       primarySaleHappened: metadata[i].primarySaleHappened,
+//       maxSupply: metadata[i]['edition']['maxSupply'],
+//       collection: new PublicKey("5gCu1LdgCmwMjdNHfhGnWV3smrwNJGK85dT5EHN3djtd"),
+//       mintTokens: true,
+//     }
+//   );
+//   await metaplex.nfts().verifyCollection(
+//     {
+//       mintAddress: nft.mint.address,
+//       collectionMintAddress: new PublicKey("5gCu1LdgCmwMjdNHfhGnWV3smrwNJGK85dT5EHN3djtd"),
+//       isSizedCollection: true,
+//     }
+//   );  
+//   console.log(
+//     `Token Mint: https://explorer.solana.com/address/${nft.address.toString()}?cluster=devnet`);
+//   // console.log(`nft mint address: ${nft.mint.address}`)
+// }
 
 
 
 
+ 
+  // const {nft} = await metaplex.nfts().create(
+  //   {
+  //     uri: "https://content.honey.land/images/legends/awards/honeymadness.jpg", // metadata URI(off-chain)
+  //     name: "2023 Honey Madness Champion",
+  //     symbol:"HL_LGND" ,
+  //     // sellerFeeBasisPoints: metadata[i]['json']['seller_fee_basis_points']
+  //     sellerFeeBasisPoints: 500, 
+  //     tokenStandard: 0,
+  //     isMutable: true,
+  //     // primarySaleHappened: ,
+  //     // maxSupply: ,
+      
+  //     // collection: new PublicKey("5gCu1LdgCmwMjdNHfhGnWV3smrwNJGK85dT5EHN3djtd"),
+  //     // mintTokens: true,
+  //   }
+  // );
+  // // await metaplex.nfts().verifyCollection(
+  // //   {
+  // //     mintAddress: nft.mint.address,
+  // //     collectionMintAddress: new PublicKey("5gCu1LdgCmwMjdNHfhGnWV3smrwNJGK85dT5EHN3djtd"),
+  // //     isSizedCollection: true,
+  // //   }
+  // // );  
+  // console.log(
+  //   `Token Mint: https://explorer.solana.com/address/${nft.address.toString()}?cluster=devnet`);
+  // // console.log(`nft mint address: ${nft.mint.address}`)
 
 
 
 
+  // const {nft} = await metaplex.nfts().create(
+  //   {
+  //     uri: "https://content.honey.land/images/legends/awards/worldcup.jpg", // metadata URI(off-chain)
+  //     name: "2022 honey World Cup Champion",
+  //     symbol:"HL_LGND" ,
+  //     // sellerFeeBasisPoints: metadata[i]['json']['seller_fee_basis_points']
+  //     sellerFeeBasisPoints: 500, 
+  //     tokenStandard: 0,
+  //     isMutable: true,
+  //     // primarySaleHappened: ,
+  //     // maxSupply: ,
+      
+  //     // collection: new PublicKey("5gCu1LdgCmwMjdNHfhGnWV3smrwNJGK85dT5EHN3djtd"),
+  //     // mintTokens: true,
+  //   }
+  // );
+  // // await metaplex.nfts().verifyCollection(
+  // //   {
+  // //     mintAddress: nft.mint.address,
+  // //     collectionMintAddress: new PublicKey("5gCu1LdgCmwMjdNHfhGnWV3smrwNJGK85dT5EHN3djtd"),
+  // //     isSizedCollection: true,
+  // //   }
+  // // );  
+  // console.log(
+  //   `Token Mint: https://explorer.solana.com/address/${nft.address.toString()}?cluster=devnet`);
+  // // console.log(`nft mint address: ${nft.mint.address}`)

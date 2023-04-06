@@ -1,0 +1,27 @@
+{
+    "name": "2023 Honey Madness Champion",
+    "symbol": "HL_LGND",
+    "description": " An NFT award given to the Champion of the 2023 Honey Madness basketball tournament",
+    "image": "https://content.honey.land/images/legends/awards/honeymadness.jpg",
+    "external_url": "https://honey.land",
+    "attributes": [
+      { "trait_type": "Type", "value": "Award" },
+      { "trait_type": "Size", "value": "1 of 1" }
+    ],
+    "collection": { "name": "Honeyland Legends", "family": "Legends" },
+    "properties": {
+      "files": [
+        {
+          "uri": "https://content.honey.land/images/legends/awards/honeymadness.jpg",
+          "type": "image/png"
+        }
+      ],
+      "category": "image",
+      "creators": [
+        {
+          "address": "BCyDSusscFeYDjDYqH8YVD3Rvvv1Wi1vYiGnifo8trXv",
+          "share": 100
+        }
+      ]
+    }
+  }
