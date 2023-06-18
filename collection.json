@@ -1,0 +1,9 @@
+[
+    {
+        "name": "#LP_COLL",
+        "symbol": "LP_CL",
+        "description": "My Collection's description",
+        "image": "https://arweave.net/XTGn6RDFvnw4qRlEyBD4xFHPiBOLgtFYmWV48uhuJy4",
+        "seller_fee_basis_points": 500
+    }
+]

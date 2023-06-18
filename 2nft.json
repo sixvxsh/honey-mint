@@ -1,0 +1,140 @@
+[
+    {
+        "model": "nft",
+        "updateAuthorityAddress": "BCyDSusscFeYDjDYqH8YVD3Rvvv1Wi1vYiGnifo8trXv",
+        "json": null,
+        "jsonLoaded": true,
+        "name": "Platinum Pass #055",
+        "symbol": "HL_Pl",
+        "uri": "https://storage.googleapis.com/fractal-launchpad-public-assets/honeyland/assets_platinum_pass/55.json",
+        "isMutable": true,
+        "primarySaleHappened": true,
+        "sellerFeeBasisPoints": 410,
+        "editionNonce": 255,
+        "creators": [
+            {
+                "address": "NAJ96V7Ewqwx6M34b9njYyiX3643RSunbrRD87urAGS",
+                "verified": true,
+                "share": 0
+            },
+            {
+                "address": "C2gyWTyDz6CK822hLvCMKZ5MBQRkEFjcaF8UoERrYAvy",
+                "verified": false,
+                "share": 90
+            },
+            {
+                "address": "HMduKVo3A19U5EpQdEhPjo9hq9zfZXn8aGVYZp7Vc7fX",
+                "verified": false,
+                "share": 10
+            }
+        ],
+        "tokenStandard": 0,
+        "collection": {
+            "verified": true,
+            "key": "CTXwXX3cbAKf9u1wwPiJei1hJKKvQxYiHagRwjvsvuzA",
+            "address": "CTXwXX3cbAKf9u1wwPiJei1hJKKvQxYiHagRwjvsvuzA"
+        },
+        "collectionDetails": null,
+        "uses": null,
+        "programmableConfig": null,
+        "address": "98zoY8LMr8Xh8M9dUC5whwqXXVrMu3awG8CxxrtKawZq",
+        "metadataAddress": "3r2RqjERux1XPNFFVjGLwUH8kCe7sRPfTZxbhtnVYJnL",
+        "mint": {
+            "model": "mint",
+            "address": "98zoY8LMr8Xh8M9dUC5whwqXXVrMu3awG8CxxrtKawZq",
+            "mintAuthorityAddress": "tz7y38MigUUnYC2nLpumzcpYLN6dfCcgeDxVi5NDViY",
+            "freezeAuthorityAddress": "tz7y38MigUUnYC2nLpumzcpYLN6dfCcgeDxVi5NDViY",
+            "decimals": 0,
+            "supply": {
+                "basisPoints": "01",
+                "currency": {
+                    "symbol": "HL_Pl",
+                    "decimals": 0,
+                    "namespace": "spl-token"
+                }
+            },
+            "isWrappedSol": false,
+            "currency": {
+                "symbol": "HL_Pl",
+                "decimals": 0,
+                "namespace": "spl-token"
+            }
+        },
+        "edition": {
+            "model": "nftEdition",
+            "isOriginal": true,
+            "address": "tz7y38MigUUnYC2nLpumzcpYLN6dfCcgeDxVi5NDViY",
+            "supply": "00",
+            "maxSupply": "00"
+        }
+    },
+    {
+        "model": "nft",
+        "updateAuthorityAddress": "BCyDSusscFeYDjDYqH8YVD3Rvvv1Wi1vYiGnifo8trXv",
+        "json": null,
+        "jsonLoaded": true,
+        "name": "Diamond Pass #139",
+        "symbol": "HL_Pl",
+        "uri": "https://storage.googleapis.com/fractal-launchpad-public-assets/honeyland/assets_platinum_pass/139.json",
+        "isMutable": true,
+        "primarySaleHappened": true,
+        "sellerFeeBasisPoints": 410,
+        "editionNonce": 254,
+        "creators": [
+            {
+                "address": "NAJ96V7Ewqwx6M34b9njYyiX3643RSunbrRD87urAGS",
+                "verified": true,
+                "share": 0
+            },
+            {
+                "address": "C2gyWTyDz6CK822hLvCMKZ5MBQRkEFjcaF8UoERrYAvy",
+                "verified": false,
+                "share": 90
+            },
+            {
+                "address": "HMduKVo3A19U5EpQdEhPjo9hq9zfZXn8aGVYZp7Vc7fX",
+                "verified": false,
+                "share": 10
+            }
+        ],
+        "tokenStandard": 0,
+        "collection": {
+            "verified": true,
+            "key": "CTXwXX3cbAKf9u1wwPiJei1hJKKvQxYiHagRwjvsvuzA",
+            "address": "CTXwXX3cbAKf9u1wwPiJei1hJKKvQxYiHagRwjvsvuzA"
+        },
+        "collectionDetails": null,
+        "uses": null,
+        "programmableConfig": null,
+        "address": "4CrGG1M3cDgYqvyVwFjJZgRmQbq7SJ2xQjigfAmdTc8S",
+        "metadataAddress": "4AZaUKG174iSpTZuFKLedh2iHKKVH5S2r49KhHjyQHNK",
+        "mint": {
+            "model": "mint",
+            "address": "4CrGG1M3cDgYqvyVwFjJZgRmQbq7SJ2xQjigfAmdTc8S",
+            "mintAuthorityAddress": "2TJLg9a4PiJGFoEbSFRwzGvLGpMUeT2Qr6nRQojyqaSg",
+            "freezeAuthorityAddress": "2TJLg9a4PiJGFoEbSFRwzGvLGpMUeT2Qr6nRQojyqaSg",
+            "decimals": 0,
+            "supply": {
+                "basisPoints": "01",
+                "currency": {
+                    "symbol": "HL_Pl",
+                    "decimals": 0,
+                    "namespace": "spl-token"
+                }
+            },
+            "isWrappedSol": false,
+            "currency": {
+                "symbol": "HL_Pl",
+                "decimals": 0,
+                "namespace": "spl-token"
+            }
+        },
+        "edition": {
+            "model": "nftEdition",
+            "isOriginal": true,
+            "address": "2TJLg9a4PiJGFoEbSFRwzGvLGpMUeT2Qr6nRQojyqaSg",
+            "supply": "00",
+            "maxSupply": "00"
+        }
+    }
+]

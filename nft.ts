@@ -30,33 +30,76 @@ const owner = await initializeKeypair(connection);
 
 
 
+
 const metaplex = Metaplex.make(connection).use(keypairIdentity(owner)).use(bundlrStorage({
   address: "https://devnet.bundlr.network",
   providerUrl: "https://api.devnet.solana.com",
-  timeout: 6000,
+  timeout: 10000,
 }))
 
 
-const rawData = fs.readFileSync('onenft.json');
+
+// async function uploadImages() {
+//   const imageFolder = './landpass';
+//   const files = fs.readdirSync(imageFolder);
+
+//   for (const file of files) {
+//     if (file.endsWith('.png')) {
+//       const buffer = fs.readFileSync(`${imageFolder}/${file}`);
+//       const metaplexFile = toMetaplexFile(buffer, file);
+//       const imageUri = await metaplex.storage().upload(metaplexFile);
+//       console.log(`Image URL for ${file}:`, imageUri);
+//     }
+//   }
+// }
+
+// uploadImages();
+
+
+// async function uploadMetadata() {
+//   const file1 = fs.readFileSync('collection.json');
+//   const metadata = JSON.parse(file1.toString());
+
+//   // Read from file1
+//   for (let i = 0; i < metadata.length; i++) {
+//     const { uri } = await metaplex.nfts().uploadMetadata({
+//       name: metadata[i].name,
+//       description: "My Collection's description",
+//       image: metadata[i].image,
+//       seller_fee_basis_points: 500
+//     });
+//     const nftName = metadata[i].name; // Store the name separately
+//     console.log(`Metadata URI for ${nftName}:`, uri);
+//   }
+// }
+
+// uploadMetadata();
+
+
+
+
+
+
+const rawData = fs.readFileSync('filee11.json');
 // console.log("rawdata before parse", rawData);
 const metadata = JSON.parse(rawData.toString());
 // console.log("data after parse", metadata);
 
 
-const nft_address = new PublicKey("XTmPeWcMW7A88We4ShhmNcDiGVYhPrus1cfCMPmbrao");
-const NFT = await metaplex.nfts().findByMint({mintAddress:nft_address});
-const  mint  = NFT.mint.address;
-const payer = new web3.PublicKey("4EUutrmgFQnUGc6i4QJkeDN7Zbvnd1oBXmVcEGrD9Q85");
+// const nft_address = new PublicKey("XTmPeWcMW7A88We4ShhmNcDiGVYhPrus1cfCMPmbrao");
+// const NFT = await metaplex.nfts().findByMint({mintAddress:nft_address});
+// const  mint  = NFT.mint.address;
+// const payer = new web3.PublicKey("4EUutrmgFQnUGc6i4QJkeDN7Zbvnd1oBXmVcEGrD9Q85");
 
-console.log("address" , NFT.address.toBase58());
-console.log("COLLECTION" , NFT.collection?.address.toBase58());
-console.log("METADATA" , NFT.metadataAddress.toBase58());
-console.log("address" , NFT.editionNonce);
-console.log("Toeken address" , );
+// console.log("address" , NFT.address.toBase58());
+// console.log("COLLECTION" , NFT.collection?.address.toBase58());
+// console.log("METADATA" , NFT.metadataAddress.toBase58());
+// console.log("address" , NFT.editionNonce);
+// console.log("Toeken address" , );
 
 
-const tokenAddress = await getAssociatedTokenAddress(mint, payer);
-console.log("Token address" , tokenAddress);
+// const tokenAddress = await getAssociatedTokenAddress(mint, payer);
+// console.log("Token address" , tokenAddress);
 
 
 // const collectionUpdateAuthority = Keypair.generate();
@@ -119,10 +162,10 @@ console.log("Token address" , tokenAddress);
 // creating collection nft 
 // const { nft } = await metaplex.nfts().create(
 //   {
-//     uri: "https://content.honey.land/assets/collections/honeyland_passes.json",
-//     name: "Honeyland Passes",
+//     uri: "https://arweave.net/DKEzC2Lpcqhub_2klWIxsUpIIRcTdx4IQy3bTmZ9uc0",
+//     name: "#LP_COLL",
 //     sellerFeeBasisPoints: 500,
-//     symbol: "HL_PASS",
+//     symbol: "LP_CL",
 //     isCollection: true,
 //     collectionIsSized: true,
 //   },
@@ -177,51 +220,46 @@ console.log("Token address" , tokenAddress);
 
 
 // creating new nft with metadata
-// try {
-//   for (let i = 0; i < metadata.length; i++ ) {
-//     const {nft} = await metaplex.nfts().create(
-//       {
-//         uri: metadata[i].uri, // metadata URI(off-chain)
-//         name: metadata[i].name,
-//         symbol: metadata[i].symbol,
-//         // sellerFeeBasisPoints: metadata[i]['json']['seller_fee_basis_points']
-//         sellerFeeBasisPoints: 500, 
-//         tokenStandard: metadata[i].tokenStandard,
-//         isMutable: metadata[i].isMutable,
-//         primarySaleHappened: metadata[i].primarySaleHappened,
-//         maxSupply: metadata[i]['edition']['maxSupply'],
-//         collection: new PublicKey("G5WvFzffVU2vLW7Eitym5ebobmFAkXfvtqgkdi2ZJprB"),
-//         mintTokens: true,
-//       }
-//     );
-//     await metaplex.nfts().verifyCollection(
-//       {
-//         mintAddress: nft.mint.address,
-//         collectionMintAddress: new PublicKey("G5WvFzffVU2vLW7Eitym5ebobmFAkXfvtqgkdi2ZJprB"),
-//         isSizedCollection: true,
-//       }
-//     );  
-//     console.log(
-//       `NFT MINT: https://explorer.solana.com/address/${nft.address.toString()}?cluster=devnet`);
-//     // console.log(
-//     //   `NFT COLLECTION: https://explorer.solana.com/address/${nft.collection.toString()}?cluster=devnet`
-//     // );
-//     // console.log(
-//     //   `NFT CREATORS: https://explorer.solana.com/address/${nft.creators.toString()}?cluster=devnet`
-//     // );
-//     // console.log(
-//     //   `NFT EDITION: https://explorer.solana.com/address/${nft.edition.toString()}?cluster=devnet`
-//     // );
-//     // console.log(
-//     //   `NFT METADATA: https://explorer.solana.com/address/${nft.metadataAddress.toString()}?cluster=devnet`
-//     // );
-//     // console.log(`nft mint address: ${nft.mint.address}`)
-//   };
-  
-// } catch (error) {
-//   console.log("ERROR IN MINT");
-//   console.error(error);
-// };
+try {
+  for (let i = 0; i < metadata.length; i++ ) {
+    const {nft} = await metaplex.nfts().create(
+      {
+        uri: metadata[i].uri, // metadata URI(off-chain)
+        name: metadata[i].name,
+        symbol: "LP",
+        // sellerFeeBasisPoints: metadata[i]['json']['seller_fee_basis_points']
+        sellerFeeBasisPoints: 500, 
+        // tokenStandard: metadata[i].tokenStandard,
+        isMutable: true,
+        // primarySaleHappened: metadata[i].primarySaleHappened,
+        // maxSupply: metadata[i]['edition']['maxSupply'],
+        collection: new PublicKey("8yM5iaHshC7TLYqtB6jeoJoaiCeUToEQttTnFaqn7hLU"),
+        mintTokens: true,
+      }
+    );
+    await metaplex.nfts().verifyCollection(
+      {
+        mintAddress: nft.mint.address,
+        collectionMintAddress: new PublicKey("8yM5iaHshC7TLYqtB6jeoJoaiCeUToEQttTnFaqn7hLU"),
+        isSizedCollection: true,
+      }
+    );  
+    const nftName = metadata[i].name; // Store the name separately
+    console.log(`NFT MINT FOR ${nftName}===>`);
+    console.log(
+      `https://explorer.solana.com/address/${nft.address.toString()}?cluster=devnet`);
+    // console.log(
+    //   `NFT COLLECTION: https://explorer.solana.com/address/${nft.collection.toString()}?cluster=devnet`
+    // );
+    // console.log(
+    //   `NFT METADATA: https://explorer.solana.com/address/${nft.metadataAddress.toString()}?cluster=devnet`
+    // );
+    // console.log(`nft mint address: ${nft.mint.address}`)
+  };
+} catch (error) {
+  console.log("ERROR IN MINT");
+  console.error(error);
+};
 
 
 
