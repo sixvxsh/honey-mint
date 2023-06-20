@@ -86,20 +86,20 @@ const metadata = JSON.parse(rawData.toString());
 // console.log("data after parse", metadata);
 
 
-// const nft_address = new PublicKey("XTmPeWcMW7A88We4ShhmNcDiGVYhPrus1cfCMPmbrao");
-// const NFT = await metaplex.nfts().findByMint({mintAddress:nft_address});
-// const  mint  = NFT.mint.address;
-// const payer = new web3.PublicKey("4EUutrmgFQnUGc6i4QJkeDN7Zbvnd1oBXmVcEGrD9Q85");
+const nft_address = new PublicKey("BVwY8FYCvzeqv7Y4mmAEHuyhygDjEyJfC64fqeCpa3S7");
+const NFT = await metaplex.nfts().findByMint({mintAddress:nft_address});
+const  mint  = NFT.mint.address;
+const payer = new web3.PublicKey("GpFuzeBf6oQm98fiTr375rb8HfmgjQA2nU7CwZgG7dtC");
 
-// console.log("address" , NFT.address.toBase58());
-// console.log("COLLECTION" , NFT.collection?.address.toBase58());
-// console.log("METADATA" , NFT.metadataAddress.toBase58());
-// console.log("address" , NFT.editionNonce);
+console.log("address" , NFT.address.toBase58());
+console.log("COLLECTION" , NFT.collection?.address.toBase58());
+console.log("METADATA" , NFT.metadataAddress.toBase58());
+console.log("address" , NFT.editionNonce);
 // console.log("Toeken address" , );
 
 
-// const tokenAddress = await getAssociatedTokenAddress(mint, payer);
-// console.log("Token address" , tokenAddress);
+const tokenAddress = await getAssociatedTokenAddress(mint, payer);
+console.log("Token address" , tokenAddress);
 
 
 // const collectionUpdateAuthority = Keypair.generate();
@@ -220,46 +220,46 @@ const metadata = JSON.parse(rawData.toString());
 
 
 // creating new nft with metadata
-try {
-  for (let i = 0; i < metadata.length; i++ ) {
-    const {nft} = await metaplex.nfts().create(
-      {
-        uri: metadata[i].uri, // metadata URI(off-chain)
-        name: metadata[i].name,
-        symbol: "LP",
-        // sellerFeeBasisPoints: metadata[i]['json']['seller_fee_basis_points']
-        sellerFeeBasisPoints: 500, 
-        // tokenStandard: metadata[i].tokenStandard,
-        isMutable: true,
-        // primarySaleHappened: metadata[i].primarySaleHappened,
-        // maxSupply: metadata[i]['edition']['maxSupply'],
-        collection: new PublicKey("8yM5iaHshC7TLYqtB6jeoJoaiCeUToEQttTnFaqn7hLU"),
-        mintTokens: true,
-      }
-    );
-    await metaplex.nfts().verifyCollection(
-      {
-        mintAddress: nft.mint.address,
-        collectionMintAddress: new PublicKey("8yM5iaHshC7TLYqtB6jeoJoaiCeUToEQttTnFaqn7hLU"),
-        isSizedCollection: true,
-      }
-    );  
-    const nftName = metadata[i].name; // Store the name separately
-    console.log(`NFT MINT FOR ${nftName}===>`);
-    console.log(
-      `https://explorer.solana.com/address/${nft.address.toString()}?cluster=devnet`);
-    // console.log(
-    //   `NFT COLLECTION: https://explorer.solana.com/address/${nft.collection.toString()}?cluster=devnet`
-    // );
-    // console.log(
-    //   `NFT METADATA: https://explorer.solana.com/address/${nft.metadataAddress.toString()}?cluster=devnet`
-    // );
-    // console.log(`nft mint address: ${nft.mint.address}`)
-  };
-} catch (error) {
-  console.log("ERROR IN MINT");
-  console.error(error);
-};
+// try {
+//   for (let i = 0; i < metadata.length; i++ ) {
+//     const {nft} = await metaplex.nfts().create(
+//       {
+//         uri: metadata[i].uri, // metadata URI(off-chain)
+//         name: metadata[i].name,
+//         symbol: "LP",
+//         // sellerFeeBasisPoints: metadata[i]['json']['seller_fee_basis_points']
+//         sellerFeeBasisPoints: 500, 
+//         // tokenStandard: metadata[i].tokenStandard,
+//         isMutable: true,
+//         // primarySaleHappened: metadata[i].primarySaleHappened,
+//         // maxSupply: metadata[i]['edition']['maxSupply'],
+//         collection: new PublicKey("8yM5iaHshC7TLYqtB6jeoJoaiCeUToEQttTnFaqn7hLU"),
+//         mintTokens: true,
+//       }
+//     );
+//     await metaplex.nfts().verifyCollection(
+//       {
+//         mintAddress: nft.mint.address,
+//         collectionMintAddress: new PublicKey("8yM5iaHshC7TLYqtB6jeoJoaiCeUToEQttTnFaqn7hLU"),
+//         isSizedCollection: true,
+//       }
+//     );  
+//     const nftName = metadata[i].name; // Store the name separately
+//     console.log(`NFT MINT FOR ${nftName}===>`);
+//     console.log(
+//       `https://explorer.solana.com/address/${nft.address.toString()}?cluster=devnet`);
+//     // console.log(
+//     //   `NFT COLLECTION: https://explorer.solana.com/address/${nft.collection.toString()}?cluster=devnet`
+//     // );
+//     // console.log(
+//     //   `NFT METADATA: https://explorer.solana.com/address/${nft.metadataAddress.toString()}?cluster=devnet`
+//     // );
+//     // console.log(`nft mint address: ${nft.mint.address}`)
+//   };
+// } catch (error) {
+//   console.log("ERROR IN MINT");
+//   console.error(error);
+// };
 
 
 
@@ -267,26 +267,26 @@ try {
  
   // const {nft} = await metaplex.nfts().create(
   //   {
-  //     uri: "https://storage.googleapis.com/fractal-launchpad-public-assets/honeyland/assets_gold_pass/57.json", // metadata URI(off-chain)
-  //     name: "Gold Pass #057",
-  //     symbol:"HL_Gold" ,
+  //     uri: "https://storage.googleapis.com/fractal-launchpad-public-assets/honeyland/assets_platinum_pass/139.json", // metadata URI(off-chain)
+  //     name: "Diamond Pass #139",
+  //     symbol:"HL_Pl" ,
   //     // sellerFeeBasisPoints: metadata[i]['json']['seller_fee_basis_points']
   //     sellerFeeBasisPoints: 500, 
   //     tokenStandard: 0,
   //     isMutable: true,
   //     // primarySaleHappened: ,
   //     // maxSupply: ,
-  //     collection: new PublicKey("G5WvFzffVU2vLW7Eitym5ebobmFAkXfvtqgkdi2ZJprB"),
+  //     // collection: new PublicKey("G5WvFzffVU2vLW7Eitym5ebobmFAkXfvtqgkdi2ZJprB"),
   //     mintTokens: true,
   //   }
   // );
-  // await metaplex.nfts().verifyCollection(
-  //   {
-  //     mintAddress: nft.mint.address,
-  //     collectionMintAddress: new PublicKey("G5WvFzffVU2vLW7Eitym5ebobmFAkXfvtqgkdi2ZJprB"),
-  //     isSizedCollection: true,
-  //   }
-  // );  
+  // // await metaplex.nfts().verifyCollection(
+  // //   {
+  // //     mintAddress: nft.mint.address,
+  // //     collectionMintAddress: new PublicKey("G5WvFzffVU2vLW7Eitym5ebobmFAkXfvtqgkdi2ZJprB"),
+  // //     isSizedCollection: true,
+  // //   }
+  // // );  
   // console.log(
   //   `Token Mint: https://explorer.solana.com/address/${nft.address.toString()}?cluster=devnet`);
   //     console.log(
