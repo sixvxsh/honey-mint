@@ -80,16 +80,16 @@ const metaplex = Metaplex.make(connection).use(keypairIdentity(owner)).use(bundl
 
 
 
-const rawData = fs.readFileSync('filee11.json');
-// console.log("rawdata before parse", rawData);
-const metadata = JSON.parse(rawData.toString());
+// const rawData = fs.readFileSync('filee11.json');
+// // console.log("rawdata before parse", rawData);
+// const metadata = JSON.parse(rawData.toString());
 // console.log("data after parse", metadata);
 
 
 const nft_address = new PublicKey("BVwY8FYCvzeqv7Y4mmAEHuyhygDjEyJfC64fqeCpa3S7");
 const NFT = await metaplex.nfts().findByMint({mintAddress:nft_address});
 const  mint  = NFT.mint.address;
-const payer = new web3.PublicKey("GpFuzeBf6oQm98fiTr375rb8HfmgjQA2nU7CwZgG7dtC");
+const payer = new web3.PublicKey("4EUutrmgFQnUGc6i4QJkeDN7Zbvnd1oBXmVcEGrD9Q85");
 
 console.log("address" , NFT.address.toBase58());
 console.log("COLLECTION" , NFT.collection?.address.toBase58());
