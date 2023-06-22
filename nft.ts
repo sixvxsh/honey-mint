@@ -86,16 +86,16 @@ const metaplex = Metaplex.make(connection).use(keypairIdentity(owner)).use(bundl
 // console.log("data after parse", metadata);
 
 
-const nft_address = new PublicKey("BVwY8FYCvzeqv7Y4mmAEHuyhygDjEyJfC64fqeCpa3S7");
+const nft_address = new PublicKey("H9LyTJk8cGBNYDMvh2ey39UGuPvYAF6e99b413WUh7ve");
 const NFT = await metaplex.nfts().findByMint({mintAddress:nft_address});
 const  mint  = NFT.mint.address;
-const payer = new web3.PublicKey("4EUutrmgFQnUGc6i4QJkeDN7Zbvnd1oBXmVcEGrD9Q85");
+const payer = new web3.PublicKey("GpFuzeBf6oQm98fiTr375rb8HfmgjQA2nU7CwZgG7dtC");
 
 console.log("address" , NFT.address.toBase58());
-console.log("COLLECTION" , NFT.collection?.address.toBase58());
+// // // console.log("COLLECTION" , NFT.collection?.address.toBase58());
 console.log("METADATA" , NFT.metadataAddress.toBase58());
-console.log("address" , NFT.editionNonce);
-// console.log("Toeken address" , );
+// // console.log("address" , NFT.editionNonce);
+// // // console.log("Toeken address" , );
 
 
 const tokenAddress = await getAssociatedTokenAddress(mint, payer);
@@ -267,8 +267,8 @@ console.log("Token address" , tokenAddress);
  
   // const {nft} = await metaplex.nfts().create(
   //   {
-  //     uri: "https://storage.googleapis.com/fractal-launchpad-public-assets/honeyland/assets_platinum_pass/139.json", // metadata URI(off-chain)
-  //     name: "Diamond Pass #139",
+  //     uri: "https://storage.googleapis.com/fractal-launchpad-public-assets/honeyland/assets_gold_pass/30.json", // metadata URI(off-chain)
+  //     name: "Rose Gold Pass #030",
   //     symbol:"HL_Pl" ,
   //     // sellerFeeBasisPoints: metadata[i]['json']['seller_fee_basis_points']
   //     sellerFeeBasisPoints: 500, 
@@ -280,16 +280,16 @@ console.log("Token address" , tokenAddress);
   //     mintTokens: true,
   //   }
   // );
-  // // await metaplex.nfts().verifyCollection(
-  // //   {
-  // //     mintAddress: nft.mint.address,
-  // //     collectionMintAddress: new PublicKey("G5WvFzffVU2vLW7Eitym5ebobmFAkXfvtqgkdi2ZJprB"),
-  // //     isSizedCollection: true,
-  // //   }
-  // // );  
+  // await metaplex.nfts().verifyCollection(
+  //   {
+  //     mintAddress: nft.mint.address,
+  //     collectionMintAddress: new PublicKey("G5WvFzffVU2vLW7Eitym5ebobmFAkXfvtqgkdi2ZJprB"),
+  //     isSizedCollection: true,
+  //   }
+  // );  
   // console.log(
   //   `Token Mint: https://explorer.solana.com/address/${nft.address.toString()}?cluster=devnet`);
-  //     console.log(
+  // //     console.log(
   //     `NFT CREATORS: https://explorer.solana.com/address/${nft.creators.toString()}?cluster=devnet`
   //   );
   //   console.log(
