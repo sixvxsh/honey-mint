@@ -10,11 +10,14 @@ import {
 } from "@metaplex-foundation/js"
 import * as fs from "fs"
 import * as web3 from "@solana/web3.js";
-import { getAssociatedTokenAddress } from "@solana/spl-token";
+import { getAssociatedTokenAddress, getOrCreateAssociatedTokenAccount } from "@solana/spl-token";
 
 
 const connection = new Connection(clusterApiUrl('devnet'), 'confirmed');
 const owner = await initializeKeypair(connection);
+const pubkeey = owner.publicKey;
+console.log("pubkey", pubkeey);
+
 // const owner = new PublicKey('2XkU5YXArf9Rkf6jnYtenNhxbTcR2Lb6x4vQXS6MASmRiUphvJD2Q6mDnkMbHEKFz6n9qeUEo4G6cFdKmCvegmWD')
 
 // console.log('owner publickey:' , owner.publicKey.toBase58());
@@ -80,26 +83,27 @@ const metaplex = Metaplex.make(connection).use(keypairIdentity(owner)).use(bundl
 
 
 
-// const rawData = fs.readFileSync('filee11.json');
-// // console.log("rawdata before parse", rawData);
+// const rawData = fs.readFileSync('10nft.json');
+// // // console.log("rawdata before parse", rawData);
 // const metadata = JSON.parse(rawData.toString());
 // console.log("data after parse", metadata);
 
 
-const nft_address = new PublicKey("H9LyTJk8cGBNYDMvh2ey39UGuPvYAF6e99b413WUh7ve");
+const nft_address = new PublicKey("8AF86ar2FEFcutx1jZzGFLeWkfJWAdx9mswVXD5kPmuw");
 const NFT = await metaplex.nfts().findByMint({mintAddress:nft_address});
 const  mint  = NFT.mint.address;
-const payer = new web3.PublicKey("GpFuzeBf6oQm98fiTr375rb8HfmgjQA2nU7CwZgG7dtC");
+const payer = new web3.PublicKey("4EUutrmgFQnUGc6i4QJkeDN7Zbvnd1oBXmVcEGrD9Q85");
 
-console.log("address" , NFT.address.toBase58());
-// // // console.log("COLLECTION" , NFT.collection?.address.toBase58());
-console.log("METADATA" , NFT.metadataAddress.toBase58());
-// // console.log("address" , NFT.editionNonce);
-// // // console.log("Toeken address" , );
+// console.log("address" , NFT.address.toBase58());
+// // // // // // // console.log("COLLECTION" , NFT.collection?.address.toBase58());
+// console.log("METADATA" , NFT.metadataAddress.toBase58());
+// // // // // // console.log("address" , NFT.editionNonce);
+// // // // // // // console.log("Toeken address" , );
 
 
 const tokenAddress = await getAssociatedTokenAddress(mint, payer);
 console.log("Token address" , tokenAddress);
+
 
 
 // const collectionUpdateAuthority = Keypair.generate();
@@ -226,24 +230,24 @@ console.log("Token address" , tokenAddress);
 //       {
 //         uri: metadata[i].uri, // metadata URI(off-chain)
 //         name: metadata[i].name,
-//         symbol: "LP",
+//         symbol: metadata[i].symbol,
 //         // sellerFeeBasisPoints: metadata[i]['json']['seller_fee_basis_points']
 //         sellerFeeBasisPoints: 500, 
 //         // tokenStandard: metadata[i].tokenStandard,
 //         isMutable: true,
 //         // primarySaleHappened: metadata[i].primarySaleHappened,
 //         // maxSupply: metadata[i]['edition']['maxSupply'],
-//         collection: new PublicKey("8yM5iaHshC7TLYqtB6jeoJoaiCeUToEQttTnFaqn7hLU"),
+//         // collection: new PublicKey("8yM5iaHshC7TLYqtB6jeoJoaiCeUToEQttTnFaqn7hLU"),
 //         mintTokens: true,
 //       }
 //     );
-//     await metaplex.nfts().verifyCollection(
-//       {
-//         mintAddress: nft.mint.address,
-//         collectionMintAddress: new PublicKey("8yM5iaHshC7TLYqtB6jeoJoaiCeUToEQttTnFaqn7hLU"),
-//         isSizedCollection: true,
-//       }
-//     );  
+//     // await metaplex.nfts().verifyCollection(
+//     //   {
+//     //     mintAddress: nft.mint.address,
+//     //     collectionMintAddress: new PublicKey("8yM5iaHshC7TLYqtB6jeoJoaiCeUToEQttTnFaqn7hLU"),
+//     //     isSizedCollection: true,
+//     //   }
+//     // );  
 //     const nftName = metadata[i].name; // Store the name separately
 //     console.log(`NFT MINT FOR ${nftName}===>`);
 //     console.log(
@@ -267,8 +271,8 @@ console.log("Token address" , tokenAddress);
  
   // const {nft} = await metaplex.nfts().create(
   //   {
-  //     uri: "https://storage.googleapis.com/fractal-launchpad-public-assets/honeyland/assets_gold_pass/30.json", // metadata URI(off-chain)
-  //     name: "Rose Gold Pass #030",
+  //     uri: "https://storage.googleapis.com/fractal-launchpad-public-assets/honeyland/assets_platinum_pass/126.json", // metadata URI(off-chain)
+  //     name: "Platinum Pass #126",
   //     symbol:"HL_Pl" ,
   //     // sellerFeeBasisPoints: metadata[i]['json']['seller_fee_basis_points']
   //     sellerFeeBasisPoints: 500, 
