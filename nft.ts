@@ -81,15 +81,13 @@ const metaplex = Metaplex.make(connection).use(keypairIdentity(owner)).use(bundl
 
 
 
-
-
 // const rawData = fs.readFileSync('10nft.json');
 // // // console.log("rawdata before parse", rawData);
 // const metadata = JSON.parse(rawData.toString());
 // console.log("data after parse", metadata);
 
 
-const nft_address = new PublicKey("8AF86ar2FEFcutx1jZzGFLeWkfJWAdx9mswVXD5kPmuw");
+const nft_address = new PublicKey("Fqu2qZxREt26zx7woF138DNjb71RcVLEK9H8j1e11f9");
 const NFT = await metaplex.nfts().findByMint({mintAddress:nft_address});
 const  mint  = NFT.mint.address;
 const payer = new web3.PublicKey("4EUutrmgFQnUGc6i4QJkeDN7Zbvnd1oBXmVcEGrD9Q85");
