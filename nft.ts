@@ -10,7 +10,7 @@ import {
 } from "@metaplex-foundation/js"
 import * as fs from "fs"
 import * as web3 from "@solana/web3.js";
-import { getAssociatedTokenAddress, getOrCreateAssociatedTokenAccount } from "@solana/spl-token";
+import { createAssociatedTokenAccount, getAssociatedTokenAddress, getOrCreateAssociatedTokenAccount } from "@solana/spl-token";
 
 
 const connection = new Connection(clusterApiUrl('devnet'), 'confirmed');
@@ -81,16 +81,16 @@ const metaplex = Metaplex.make(connection).use(keypairIdentity(owner)).use(bundl
 
 
 
-// const rawData = fs.readFileSync('10nft.json');
-// // // console.log("rawdata before parse", rawData);
+// const rawData = fs.readFileSync('1nft.json');
+// // // // console.log("rawdata before parse", rawData);
 // const metadata = JSON.parse(rawData.toString());
-// console.log("data after parse", metadata);
+// // console.log("data after parse", metadata);
 
 
-const nft_address = new PublicKey("Fqu2qZxREt26zx7woF138DNjb71RcVLEK9H8j1e11f9");
+const nft_address = new PublicKey("JA7qsVExc5PDdViWD6mAJHRGcZ2u1uBwSjhPKkRBErz1");
 const NFT = await metaplex.nfts().findByMint({mintAddress:nft_address});
 const  mint  = NFT.mint.address;
-const payer = new web3.PublicKey("4EUutrmgFQnUGc6i4QJkeDN7Zbvnd1oBXmVcEGrD9Q85");
+const payer = new web3.PublicKey("GpFuzeBf6oQm98fiTr375rb8HfmgjQA2nU7CwZgG7dtC");
 
 // console.log("address" , NFT.address.toBase58());
 // // // // // // // console.log("COLLECTION" , NFT.collection?.address.toBase58());
@@ -101,6 +101,8 @@ const payer = new web3.PublicKey("4EUutrmgFQnUGc6i4QJkeDN7Zbvnd1oBXmVcEGrD9Q85")
 
 const tokenAddress = await getAssociatedTokenAddress(mint, payer);
 console.log("Token address" , tokenAddress);
+
+const jhhs = await createAssociatedTokenAccount()
 
 
 
