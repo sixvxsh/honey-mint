@@ -82,27 +82,26 @@ const metaplex = Metaplex.make(connection).use(keypairIdentity(owner)).use(bundl
 
 
 // const rawData = fs.readFileSync('1nft.json');
-// // // // console.log("rawdata before parse", rawData);
+// // // // // console.log("rawdata before parse", rawData);
 // const metadata = JSON.parse(rawData.toString());
 // // console.log("data after parse", metadata);
 
 
-const nft_address = new PublicKey("JA7qsVExc5PDdViWD6mAJHRGcZ2u1uBwSjhPKkRBErz1");
+const nft_address = new PublicKey("6fpMdSdfGKE4LmkWnTtvemnQi1a2HkzeX96qTdgEUfFq");
 const NFT = await metaplex.nfts().findByMint({mintAddress:nft_address});
 const  mint  = NFT.mint.address;
 const payer = new web3.PublicKey("GpFuzeBf6oQm98fiTr375rb8HfmgjQA2nU7CwZgG7dtC");
 
-// console.log("address" , NFT.address.toBase58());
-// // // // // // // console.log("COLLECTION" , NFT.collection?.address.toBase58());
-// console.log("METADATA" , NFT.metadataAddress.toBase58());
-// // // // // // console.log("address" , NFT.editionNonce);
-// // // // // // // console.log("Toeken address" , );
+// // // console.log("address" , NFT.address.toBase58());
+// // // // // // // // // console.log("COLLECTION" , NFT.collection?.address.toBase58());
+// // // console.log("METADATA" , NFT.metadataAddress.toBase58());
+// // // // // // // // console.log("address" , NFT.editionNonce);
+// // // // // // // // // console.log("Toeken address" , );
 
 
 const tokenAddress = await getAssociatedTokenAddress(mint, payer);
 console.log("Token address" , tokenAddress);
 
-const jhhs = await createAssociatedTokenAccount()
 
 
 
@@ -249,9 +248,8 @@ const jhhs = await createAssociatedTokenAccount()
 //     //   }
 //     // );  
 //     const nftName = metadata[i].name; // Store the name separately
-//     console.log(`NFT MINT FOR ${nftName}===>`);
-//     console.log(
-//       `https://explorer.solana.com/address/${nft.address.toString()}?cluster=devnet`);
+
+//     console.log(`NFT MINT FOR ${nftName}===> ${nft.address.toString()}`);
 //     // console.log(
 //     //   `NFT COLLECTION: https://explorer.solana.com/address/${nft.collection.toString()}?cluster=devnet`
 //     // );
