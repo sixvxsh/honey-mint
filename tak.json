@@ -1,0 +1,49 @@
+[
+    {
+        "name": "Honeyland Land Ticket #4",
+        "symbol": "HL_TCK",
+        "description": "This ticket can be redeemed for one Universe 1 Honeyland Land NFT. Redeem this at https://ticket.honey.land or in the HiveMind.",
+        "seller_fee_basis_points": 410,
+        "image": "https://content.honey.land/images/tickets/meadow.png",
+        "uri": "https://content.honey.land/assets/tickets/land/1.json",
+        "animation_url": "",
+        "external_url": "https://honey.land",
+        "attributes": [
+            {
+                "trait_type": "Type",
+                "value": "Land Ticket"
+            },
+            {
+                "trait_type": "Universe",
+                "value": "Earth"
+            },
+            {
+                "trait_type": "Climate",
+                "value": "Normal"
+            },
+            {
+                "trait_type": "Landform",
+                "value": "Meadow"
+            }
+        ],
+        "collection": {
+            "name": "Honeyland",
+            "family": "Honeyland Tickets"
+        },
+        "properties": {
+            "files": [
+                {
+                    "uri": "https://content.honey.land/images/tickets/meadow.png",
+                    "type": "image/png"
+                }
+            ],
+            "category": "image",
+            "creators": [
+                {
+                    "address": "5CVxgVp6ePLYhuYwDPHpbVBKhB25kKYy2GQCZR6ZD4VY",
+                    "share": 100
+                }
+            ]
+        }
+    }
+]
