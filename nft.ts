@@ -1,5 +1,5 @@
 import { initializeKeypair } from "./initialize"
-import { Connection,clusterApiUrl, PublicKey, Signer, Keypair, LAMPORTS_PER_SOL, } from "@solana/web3.js"
+import { Connection, clusterApiUrl, PublicKey, Signer, Keypair, LAMPORTS_PER_SOL, } from "@solana/web3.js"
 import {
   Metaplex,
   keypairIdentity,
@@ -16,7 +16,7 @@ import { createAssociatedTokenAccount, getAssociatedTokenAddress, getOrCreateAss
 const connection = new Connection(clusterApiUrl('devnet'), 'confirmed');
 const owner = await initializeKeypair(connection);
 const pubkeey = owner.publicKey;
-console.log("pubkey", pubkeey);
+// console.log("pubkey", pubkeey);
 
 // const owner = new PublicKey('2XkU5YXArf9Rkf6jnYtenNhxbTcR2Lb6x4vQXS6MASmRiUphvJD2Q6mDnkMbHEKFz6n9qeUEo4G6cFdKmCvegmWD')
 
@@ -39,6 +39,34 @@ const metaplex = Metaplex.make(connection).use(keypairIdentity(owner)).use(bundl
   providerUrl: "https://api.devnet.solana.com",
   timeout: 10000,
 }))
+
+
+
+
+
+
+// const owner = new PublicKey("GxDjr5argqsSYpBimc8Xkw5Keb7MaDdQHBTY1y9BtPDc");
+const nfts = await metaplex.nfts().findAllByOwner({ owner:pubkeey});
+
+const result = nfts.map(item => {
+  return {
+    name: item.name,
+    mintAddress: (item as any).mintAddress
+  };
+});
+const resultString = JSON.stringify(result, null, 2);
+fs.writeFileSync('allnfttttt.txt', resultString);
+// console.log('Result', result);
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -182,7 +210,7 @@ const metadata = JSON.parse(rawData.toString());
 
 
 
-
+//==================================================================
 
 // const nft = "9GCJNKorPdTuPrRefpcsrQ9o3g6XoK5Wtbzbuqx4rsxe";
 
@@ -197,18 +225,18 @@ const metadata = JSON.parse(rawData.toString());
 
 // console.log('unverified');
 
-
+// ==============================================================
 
 
 // verifycollection
-await metaplex.nfts().verifyCollection(
-  {
-    mintAddress: new PublicKey("7TxsvCdgZuGdT6qPpGGEpZsarkLkjkTA6FMy55ZY1nPC"),
-    collectionMintAddress: new PublicKey("sATUL6ewWTsnTystNrLhic4BRiA48uFi83WeA6jdEdv"),
-    isSizedCollection: true,
-  }
-)
-console.log("NFT COLLECTION VERIFIED");
+// await metaplex.nfts().verifyCollection(
+//   {
+//     mintAddress: new PublicKey("7TxsvCdgZuGdT6qPpGGEpZsarkLkjkTA6FMy55ZY1nPC"),
+//     collectionMintAddress: new PublicKey("sATUL6ewWTsnTystNrLhic4BRiA48uFi83WeA6jdEdv"),
+//     isSizedCollection: true,
+//   }
+// )
+// console.log("NFT COLLECTION VERIFIED");
 
 
 
@@ -217,7 +245,7 @@ console.log("NFT COLLECTION VERIFIED");
 
 
 
-
+// ========================================================================
 
 
 
@@ -266,70 +294,123 @@ console.log("NFT COLLECTION VERIFIED");
 
 
 
- 
-  // const {nft} = await metaplex.nfts().create(
-  //   {
-  //     uri: "https://storage.googleapis.com/fractal-launchpad-public-assets/honeyland/assets_platinum_pass/126.json", // metadata URI(off-chain)
-  //     name: "Platinum Pass #126",
-  //     symbol:"HL_Pl" ,
-  //     // sellerFeeBasisPoints: metadata[i]['json']['seller_fee_basis_points']
-  //     sellerFeeBasisPoints: 500, 
-  //     tokenStandard: 0,
-  //     isMutable: true,
-  //     // primarySaleHappened: ,
-  //     // maxSupply: ,
-  //     // collection: new PublicKey("G5WvFzffVU2vLW7Eitym5ebobmFAkXfvtqgkdi2ZJprB"),
-  //     mintTokens: true,
-  //   }
-  // );
-  // await metaplex.nfts().verifyCollection(
-  //   {
-  //     mintAddress: nft.mint.address,
-  //     collectionMintAddress: new PublicKey("G5WvFzffVU2vLW7Eitym5ebobmFAkXfvtqgkdi2ZJprB"),
-  //     isSizedCollection: true,
-  //   }
-  // );  
-  // console.log(
-  //   `Token Mint: https://explorer.solana.com/address/${nft.address.toString()}?cluster=devnet`);
-  // //     console.log(
-  //     `NFT CREATORS: https://explorer.solana.com/address/${nft.creators.toString()}?cluster=devnet`
-  //   );
-  //   console.log(
-  //     `NFT EDITION: https://explorer.solana.com/address/${nft.edition.toString()}?cluster=devnet`
-  //   );
-  //   console.log(
-  //     `NFT METADATA: https://explorer.solana.com/address/${nft.metadataAddress.toString()}?cluster=devnet`
-  //   );
-  //   console.log(`nft mint address: ${nft.mint.address}`);
+
+// const {nft} = await metaplex.nfts().create(
+//   {
+//     uri: "https://storage.googleapis.com/fractal-launchpad-public-assets/honeyland/assets_platinum_pass/126.json", // metadata URI(off-chain)
+//     name: "Platinum Pass #126",
+//     symbol:"HL_Pl" ,
+//     // sellerFeeBasisPoints: metadata[i]['json']['seller_fee_basis_points']
+//     sellerFeeBasisPoints: 500, 
+//     tokenStandard: 0,
+//     isMutable: true,
+//     // primarySaleHappened: ,
+//     // maxSupply: ,
+//     // collection: new PublicKey("G5WvFzffVU2vLW7Eitym5ebobmFAkXfvtqgkdi2ZJprB"),
+//     mintTokens: true,
+//   }
+// );
+// await metaplex.nfts().verifyCollection(
+//   {
+//     mintAddress: nft.mint.address,
+//     collectionMintAddress: new PublicKey("G5WvFzffVU2vLW7Eitym5ebobmFAkXfvtqgkdi2ZJprB"),
+//     isSizedCollection: true,
+//   }
+// );  
+// console.log(
+//   `Token Mint: https://explorer.solana.com/address/${nft.address.toString()}?cluster=devnet`);
+// //     console.log(
+//     `NFT CREATORS: https://explorer.solana.com/address/${nft.creators.toString()}?cluster=devnet`
+//   );
+//   console.log(
+//     `NFT EDITION: https://explorer.solana.com/address/${nft.edition.toString()}?cluster=devnet`
+//   );
+//   console.log(
+//     `NFT METADATA: https://explorer.solana.com/address/${nft.metadataAddress.toString()}?cluster=devnet`
+//   );
+//   console.log(`nft mint address: ${nft.mint.address}`);
 
 
 
 
 
 
-  // const {nft} = await metaplex.nfts().create(
-  //   {
-  //     uri: "https://content.honey.land/images/legends/awards/worldcup.jpg", // metadata URI(off-chain)
-  //     name: "2022 honey World Cup Champion",
-  //     symbol:"HL_LGND" ,
-  //     // sellerFeeBasisPoints: metadata[i]['json']['seller_fee_basis_points']
-  //     sellerFeeBasisPoints: 500, 
-  //     tokenStandard: 0,
-  //     isMutable: true,
-  //     // primarySaleHappened: ,
-  //     // maxSupply: ,
-      
-  //     // collection: new PublicKey("5gCu1LdgCmwMjdNHfhGnWV3smrwNJGK85dT5EHN3djtd"),
-  //     // mintTokens: true,
-  //   }
-  // );
-  // // await metaplex.nfts().verifyCollection(
-  // //   {
-  // //     mintAddress: nft.mint.address,
-  // //     collectionMintAddress: new PublicKey("5gCu1LdgCmwMjdNHfhGnWV3smrwNJGK85dT5EHN3djtd"),
-  // //     isSizedCollection: true,
-  // //   }
-  // // );  
-  // console.log(
-  //   `Token Mint: https://explorer.solana.com/address/${nft.address.toString()}?cluster=devnet`);
-  // // console.log(`nft mint address: ${nft.mint.address}`)
+// const {nft} = await metaplex.nfts().create(
+//   {
+//     uri: "https://content.honey.land/images/legends/awards/worldcup.jpg", // metadata URI(off-chain)
+//     name: "2022 honey World Cup Champion",
+//     symbol:"HL_LGND" ,
+//     // sellerFeeBasisPoints: metadata[i]['json']['seller_fee_basis_points']
+//     sellerFeeBasisPoints: 500, 
+//     tokenStandard: 0,
+//     isMutable: true,
+//     // primarySaleHappened: ,
+//     // maxSupply: ,
+
+//     // collection: new PublicKey("5gCu1LdgCmwMjdNHfhGnWV3smrwNJGK85dT5EHN3djtd"),
+//     // mintTokens: true,
+//   }
+// );
+// // await metaplex.nfts().verifyCollection(
+// //   {
+// //     mintAddress: nft.mint.address,
+// //     collectionMintAddress: new PublicKey("5gCu1LdgCmwMjdNHfhGnWV3smrwNJGK85dT5EHN3djtd"),
+// //     isSizedCollection: true,
+// //   }
+// // );  
+// console.log(
+//   `Token Mint: https://explorer.solana.com/address/${nft.address.toString()}?cluster=devnet`);
+// // console.log(`nft mint address: ${nft.mint.address}`)
+
+
+
+
+
+
+
+
+
+
+
+
+// ================================================================
+
+
+// it returns all nft based on name and mintaddress
+// const getNFTsForOwners = async () => {
+//   const promises = publicKeyList.map(async (ownerPublicKey) => {
+//     const owner = new PublicKey(ownerPublicKey);
+//     const nfts = await metaplex.nfts().findAllByOwner({ owner });
+
+//     const result = nfts.map(item => {
+//       return {
+//         name: item.name,
+//         mintAddress: (item as any).mintAddress
+//       };
+//     });
+
+//     return result;
+//   });
+
+//   const ownerNFTs = await Promise.all(promises);
+//   return ownerNFTs.flat();
+// };
+
+// // it returns all of pda accounts based on a program
+// const stakeProgramId = new PublicKey("37HsMb2NSamepLG98j7MyYiB9E5tDBzsPYWVmoR32sJ2");
+
+// const accountinfo = await connection.getParsedProgramAccounts(stakeProgramId);
+// // console.log("Pdas" , accountinfo);
+
+// const PdaList = accountinfo.map((account) => account.pubkey.toBase58());
+
+// console.log("PDAs OWNED BY PROGRAM:", PdaList);
+
+// const ownerNFTs = await getNFTsForOwners(PdaList);
+// console.log("NFTs OWNED BY PDAs:", ownerNFTs);
+
+
+
+
+
+
