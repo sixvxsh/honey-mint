@@ -81,7 +81,7 @@ const metaplex = Metaplex.make(connection).use(keypairIdentity(owner)).use(bundl
 
 
 
-const rawData = fs.readFileSync('100nft.json');
+const rawData = fs.readFileSync('1nft.json');
 // console.log("rawdata before parse", rawData);
 const metadata = JSON.parse(rawData.toString());
 // console.log("data after parse", metadata);
@@ -138,21 +138,21 @@ const metadata = JSON.parse(rawData.toString());
 
 //=================================================================================================================================//
 // updating existing nft
-// const nft_address = new PublicKey("3VLfZuWLktVPHoHocutVtr5vw8qkc8Lz1d1cUC4ZkKXQ");
+// const nft_address = new PublicKey("7TxsvCdgZuGdT6qPpGGEpZsarkLkjkTA6FMy55ZY1nPC");
 // const NFT = await metaplex.nfts().findByMint({mintAddress:nft_address});
 
 // await metaplex.nfts().update(
 //   {
-//     uri: "https://content.honey.land/assets/legends/awards/worldcup.json",
+//     // uri: "https://content.honey.land/assets/legends/awards/worldcup.json",
 //     nftOrSft: NFT,
 //     // newUpdateAuthority: new PublicKey("Av636SfEEBBmrn5UYMH67TLQredoBMoCxnPyJzc6xdSd"),
-//     // collection: new PublicKey("FWeLsxpT5gn9HRjPpNh73qJ8RFnH47d3rVss9vb35BUA"),
+//     collection: new PublicKey("sATUL6ewWTsnTystNrLhic4BRiA48uFi83WeA6jdEdv"),
 //     // authority: owner,
 
 //   }
 // );
-// // console.log(
-  // `Token Mint: https://explorer.solana.com/address/${nft.address.toString()}?cluster=devnet`);
+// console.log(
+//   `Token Mint: https://explorer.solana.com/address/${NFT.address.toString()}?cluster=devnet`);
 // console.log("NFT COLLECTION WAS UPDATED");
 
 
@@ -165,10 +165,10 @@ const metadata = JSON.parse(rawData.toString());
 // creating collection nft 
 // const { nft } = await metaplex.nfts().create(
 //   {
-//     uri: "https://arweave.net/DKEzC2Lpcqhub_2klWIxsUpIIRcTdx4IQy3bTmZ9uc0",
-//     name: "#LP_COLL",
-//     sellerFeeBasisPoints: 500,
-//     symbol: "LP_CL",
+//     uri: "https://storage.googleapis.com/fractal-launchpad-public-assets/honeyland/assets_platinum_pass/8.json",
+//     name: "Platinum Pass #008",
+//     sellerFeeBasisPoints: 410,
+//     symbol: "HL_Pl",
 //     isCollection: true,
 //     collectionIsSized: true,
 //   },
@@ -201,14 +201,14 @@ const metadata = JSON.parse(rawData.toString());
 
 
 // verifycollection
-// await metaplex.nfts().verifyCollection(
-//   {
-//     mintAddress: new PublicKey("37KpehJKubaxq9GNBA62Czdmu84w9VNQ9c3Rx8UKLzLp"),
-//     collectionMintAddress: new PublicKey("FWeLsxpT5gn9HRjPpNh73qJ8RFnH47d3rVss9vb35BUA"),
-//     isSizedCollection: true,
-//   }
-// )
-// console.log("NFT COLLECTION VERIFIED");
+await metaplex.nfts().verifyCollection(
+  {
+    mintAddress: new PublicKey("7TxsvCdgZuGdT6qPpGGEpZsarkLkjkTA6FMy55ZY1nPC"),
+    collectionMintAddress: new PublicKey("sATUL6ewWTsnTystNrLhic4BRiA48uFi83WeA6jdEdv"),
+    isSizedCollection: true,
+  }
+)
+console.log("NFT COLLECTION VERIFIED");
 
 
 
@@ -223,45 +223,45 @@ const metadata = JSON.parse(rawData.toString());
 
 
 // creating new nft with metadata
-try {
-  for (let i = 0; i < metadata.length; i++ ) {
-    const {nft} = await metaplex.nfts().create(
-      {
-        uri: metadata[i].uri, // metadata URI(off-chain)
-        name: metadata[i].name,
-        symbol: metadata[i].symbol,
-        // sellerFeeBasisPoints: metadata[i]['json']['seller_fee_basis_points']
-        sellerFeeBasisPoints: 410, 
-        // tokenStandard: metadata[i].tokenStandard,
-        isMutable: true,
-        // primarySaleHappened: metadata[i].primarySaleHappened,
-        // maxSupply: metadata[i]['edition']['maxSupply'],
-        // collection: new PublicKey("8yM5iaHshC7TLYqtB6jeoJoaiCeUToEQttTnFaqn7hLU"),
-        mintTokens: true,
-      }
-    );
-    // await metaplex.nfts().verifyCollection(
-    //   {
-    //     mintAddress: nft.mint.address,
-    //     collectionMintAddress: new PublicKey("8yM5iaHshC7TLYqtB6jeoJoaiCeUToEQttTnFaqn7hLU"),
-    //     isSizedCollection: true,
-    //   }
-    // );  
-    const nftName = metadata[i].name; // Store the name separately
+// try {
+//   for (let i = 0; i < metadata.length; i++ ) {
+//     const {nft} = await metaplex.nfts().create(
+//       {
+//         uri: metadata[i].uri, // metadata URI(off-chain)
+//         name: metadata[i].name,
+//         symbol: metadata[i].symbol,
+//         // sellerFeeBasisPoints: metadata[i]['json']['seller_fee_basis_points']
+//         sellerFeeBasisPoints: 410, 
+//         // tokenStandard: metadata[i].tokenStandard,
+//         isMutable: true,
+//         // primarySaleHappened: metadata[i].primarySaleHappened,
+//         // maxSupply: metadata[i]['edition']['maxSupply'],
+//         collection: new PublicKey("GABubkYhqDh45CHGKDik2JY5jXrCQEFQVyjGMFRwF7MU"),
+//         mintTokens: true,
+//       }
+//     );
+//     await metaplex.nfts().verifyCollection(
+//       {
+//         mintAddress: nft.mint.address,
+//         collectionMintAddress: new PublicKey("GABubkYhqDh45CHGKDik2JY5jXrCQEFQVyjGMFRwF7MU"),
+//         isSizedCollection: true,
+//       }
+//     );  
+//     const nftName = metadata[i].name; // Store the name separately
 
-    console.log(`NFT MINT FOR ${nftName}===> ${nft.address.toString()}`);
-    // console.log(
-    //   `NFT COLLECTION: https://explorer.solana.com/address/${nft.collection.toString()}?cluster=devnet`
-    // );
-    // console.log(
-    //   `NFT METADATA: https://explorer.solana.com/address/${nft.metadataAddress.toString()}?cluster=devnet`
-    // );
-    // console.log(`nft mint address: ${nft.mint.address}`)
-  };
-} catch (error) {
-  console.log("ERROR IN MINT");
-  console.error(error);
-};
+//     console.log(`NFT MINT FOR ${nftName}===> ${nft.address.toString()}`);
+//     // console.log(
+//     //   `NFT COLLECTION: https://explorer.solana.com/address/${nft.collection.toString()}?cluster=devnet`
+//     // );
+//     // console.log(
+//     //   `NFT METADATA: https://explorer.solana.com/address/${nft.metadataAddress.toString()}?cluster=devnet`
+//     // );
+//     // console.log(`nft mint address: ${nft.mint.address}`)
+//   };
+// } catch (error) {
+//   console.log("ERROR IN MINT");
+//   console.error(error);
+// };
 
 
 
