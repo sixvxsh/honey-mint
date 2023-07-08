@@ -16,7 +16,8 @@ import { createAssociatedTokenAccount, getAssociatedTokenAddress, getOrCreateAss
 const connection = new Connection(clusterApiUrl('devnet'), 'confirmed');
 const owner = await initializeKeypair(connection);
 const pubkeey = owner.publicKey;
-// console.log("pubkey", pubkeey);
+console.log("pubkey", pubkeey);
+
 
 // const owner = new PublicKey('2XkU5YXArf9Rkf6jnYtenNhxbTcR2Lb6x4vQXS6MASmRiUphvJD2Q6mDnkMbHEKFz6n9qeUEo4G6cFdKmCvegmWD')
 
@@ -46,16 +47,17 @@ const metaplex = Metaplex.make(connection).use(keypairIdentity(owner)).use(bundl
 
 
 // const owner = new PublicKey("GxDjr5argqsSYpBimc8Xkw5Keb7MaDdQHBTY1y9BtPDc");
-const nfts = await metaplex.nfts().findAllByOwner({ owner:pubkeey});
 
-const result = nfts.map(item => {
-  return {
-    name: item.name,
-    mintAddress: (item as any).mintAddress
-  };
-});
-const resultString = JSON.stringify(result, null, 2);
-fs.writeFileSync('allnfttttt.txt', resultString);
+// const nfts = await metaplex.nfts().findAllByOwner({ owner:pubkeey});
+
+// const result = nfts.map(item => {
+//   return {
+//     name: item.name,
+//     mintAddress: (item as any).mintAddress
+//   };
+// });
+// const resultString = JSON.stringify(result, null, 2);
+// fs.writeFileSync('100nftmint-2.txt', resultString);
 // console.log('Result', result);
 
 
@@ -66,16 +68,12 @@ fs.writeFileSync('allnfttttt.txt', resultString);
 
 
 
-
-
-
-
 // async function uploadImages() {
-//   const imageFolder = './landpass';
+//   const imageFolder = './HLTicket';
 //   const files = fs.readdirSync(imageFolder);
 
 //   for (const file of files) {
-//     if (file.endsWith('.png')) {
+//     if (file.endsWith('.jpg')) {
 //       const buffer = fs.readFileSync(`${imageFolder}/${file}`);
 //       const metaplexFile = toMetaplexFile(buffer, file);
 //       const imageUri = await metaplex.storage().upload(metaplexFile);
@@ -87,21 +85,32 @@ fs.writeFileSync('allnfttttt.txt', resultString);
 // uploadImages();
 
 
-// async function uploadMetadata() {
-//   const file1 = fs.readFileSync('collection.json');
-//   const metadata = JSON.parse(file1.toString());
 
-//   // Read from file1
-//   for (let i = 0; i < metadata.length; i++) {
-//     const { uri } = await metaplex.nfts().uploadMetadata({
-//       name: metadata[i].name,
-//       description: "My Collection's description",
-//       image: metadata[i].image,
-//       seller_fee_basis_points: 500
-//     });
-//     const nftName = metadata[i].name; // Store the name separately
-//     console.log(`Metadata URI for ${nftName}:`, uri);
+
+
+
+
+
+// try {
+//   async function uploadMetadata() {
+//     const file1 = fs.readFileSync('HLticketCollection.json');
+//     const metadata = JSON.parse(file1.toString());
+
+//     // Read from file1
+//     for (let i = 0; i < metadata.length; i++) {
+//       const { uri } = await metaplex.nfts().uploadMetadata({
+//         name: metadata[i].name,
+//         description: metadata[i].description,
+//         image: metadata[i].image,
+//         seller_fee_basis_points: 500
+//       });
+//       const nftName = metadata[i].name; // Store the name separately
+//       console.log(`Metadata URI for ${nftName}:`, uri);
+//     }
 //   }
+
+// } catch (Error) {
+//   console.log(Error);
 // }
 
 // uploadMetadata();
@@ -109,9 +118,39 @@ fs.writeFileSync('allnfttttt.txt', resultString);
 
 
 
-const rawData = fs.readFileSync('1nft.json');
-// console.log("rawdata before parse", rawData);
-const metadata = JSON.parse(rawData.toString());
+
+// function uploadMetadata() {
+//   throw new Error("Function not implemented.");
+// }
+
+
+
+
+const file1 = fs.readFileSync('HLticketCollection.json');
+const metadata = JSON.parse(file1.toString());
+
+
+
+const { uri } = await metaplex.nfts().uploadMetadata({
+  name: "Honeyland Land Tickets",
+  symbol: "HL_TCKT",
+  description: "This collection contains in-game NFTs and SFTs for Honeyland play + own game. They have different rarities and utility to strengthen your colony and get advantages in gameplay.",
+  image: "https://arweave.net/hA8mHJDkh7qTTp2rRI8h85DbUH-eT2ucFH4rgfifkzM",
+  seller_fee_basis_points: 500 , 
+  
+});
+// const nftName = metadata[i].name; // Store the name separately
+console.log(`Metadata URI for :`, uri);
+      
+
+
+
+
+
+
+// const rawData = fs.readFileSync('95landticket.json');
+// // console.log("rawdata before parse", rawData);
+// const metadata = JSON.parse(rawData.toString());
 // console.log("data after parse", metadata);
 
 
@@ -264,17 +303,17 @@ const metadata = JSON.parse(rawData.toString());
 //         isMutable: true,
 //         // primarySaleHappened: metadata[i].primarySaleHappened,
 //         // maxSupply: metadata[i]['edition']['maxSupply'],
-//         collection: new PublicKey("GABubkYhqDh45CHGKDik2JY5jXrCQEFQVyjGMFRwF7MU"),
+//         // collection: new PublicKey("GABubkYhqDh45CHGKDik2JY5jXrCQEFQVyjGMFRwF7MU"),
 //         mintTokens: true,
 //       }
 //     );
-//     await metaplex.nfts().verifyCollection(
-//       {
-//         mintAddress: nft.mint.address,
-//         collectionMintAddress: new PublicKey("GABubkYhqDh45CHGKDik2JY5jXrCQEFQVyjGMFRwF7MU"),
-//         isSizedCollection: true,
-//       }
-//     );  
+//     // await metaplex.nfts().verifyCollection(
+//     //   {
+//     //     mintAddress: nft.mint.address,
+//     //     collectionMintAddress: new PublicKey("GABubkYhqDh45CHGKDik2JY5jXrCQEFQVyjGMFRwF7MU"),
+//     //     isSizedCollection: true,
+//     //   }
+//     // );  
 //     const nftName = metadata[i].name; // Store the name separately
 
 //     console.log(`NFT MINT FOR ${nftName}===> ${nft.address.toString()}`);

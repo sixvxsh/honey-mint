@@ -1,0 +1,28 @@
+{
+  "name": "Honeyland Land Tickets",
+  "symbol": "HL_TCKT",
+  "description": "This collection contains in-game NFTs and SFTs for Honeyland play + own game. They have different rarities and utility to strengthen your colony and get advantages in gameplay.",
+  "seller_fee_basis_points": 500,
+  "image": "https://arweave.net/hA8mHJDkh7qTTp2rRI8h85DbUH-eT2ucFH4rgfifkzM",
+  "external_url": "https://honey.land",
+  "collection": {
+    "name": "Honeyland Tickets",
+    "family": "Honeyland Tickets"
+  },
+  "properties": {
+    "files": [
+      {
+        "uri": "https://arweave.net/hA8mHJDkh7qTTp2rRI8h85DbUH-eT2ucFH4rgfifkzM",
+        "type": "image/gif"
+      }
+    ],
+    "category": "image",
+    "creators": [
+            {
+        "address": "C2gyWTyDz6CK822hLvCMKZ5MBQRkEFjcaF8UoERrYAvy",
+        "share": 100,
+        "verified": true 
+      }
+    ]
+  }
+}
