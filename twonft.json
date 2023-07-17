@@ -2,59 +2,18 @@
   {
     "model": "nft",
     "updateAuthorityAddress": "BCyDSusscFeYDjDYqH8YVD3Rvvv1Wi1vYiGnifo8trXv",
-    "json": {
-      "name": "Gold Pass #057",
-      "symbol": "HL_Gold",
-      "description": "Honeyland GOLD Pass - reserved for only the true legends in the Swarm.",
-      "seller_fee_basis_points": 500,
-      "image": "https://storage.googleapis.com/fractal-launchpad-public-assets/honeyland/passes/Gold_Pass.gif",
-      "animation_url": "https://storage.googleapis.com/fractal-launchpad-public-assets/honeyland/passes/Gold_Pass.mp4",
-      "external_url": "https://honey.land",
-      "collection": {
-        "name": "Honeyland",
-        "family": "Honeyland Pass"
-      },
-      "properties": {
-        "files": [
-          {
-            "uri": "https://storage.googleapis.com/fractal-launchpad-public-assets/honeyland/passes/Gold_Pass.gif",
-            "type": "image/gif"
-          },
-          {
-            "uri": "https://storage.googleapis.com/fractal-launchpad-public-assets/honeyland/passes/Gold_Pass.mp4",
-            "type": "video/mp4"
-          }
-        ],
-        "category": "image",
-        "creators": [
-          {
-            "address": "C2gyWTyDz6CK822hLvCMKZ5MBQRkEFjcaF8UoERrYAvy",
-            "share": 90
-          },
-          {
-            "address": "HMduKVo3A19U5EpQdEhPjo9hq9zfZXn8aGVYZp7Vc7fX",
-            "share": 10
-          }
-        ]
-      },
-      "attributes": [
-        {
-          "trait_type": "Type",
-          "value": "Gold"
-        }
-      ]
-    },
+    "json": null,
     "jsonLoaded": true,
-    "name": "Gold Pass #057",
-    "symbol": "HL_Gold",
-    "uri": "https://storage.googleapis.com/fractal-launchpad-public-assets/honeyland/assets_gold_pass/57.json",
+    "name": "Platinum Pass #196",
+    "symbol": "HL_Pl",
+    "uri": "https://storage.googleapis.com/fractal-launchpad-public-assets/honeyland/assets_platinum_pass/196.json",
     "isMutable": true,
     "primarySaleHappened": true,
     "sellerFeeBasisPoints": 410,
-    "editionNonce": 255,
+    "editionNonce": 253,
     "creators": [
       {
-        "address": "GVExcmr6Bnm1qN3Q55oywzahYvwi3teJSKdxtFThFhNE",
+        "address": "NAJ96V7Ewqwx6M34b9njYyiX3643RSunbrRD87urAGS",
         "verified": true,
         "share": 0
       },
@@ -78,25 +37,25 @@
     "collectionDetails": null,
     "uses": null,
     "programmableConfig": null,
-    "address": "6CK5gYG415xTPFdE1uD3iY4ReBkrN1SEUDBPm8bSnZLp",
-    "metadataAddress": "AcDngx1V2zPuFaXjEfQN5zP9z8qgBq8HFgxUa3vD2fEp",
+    "address": "F7Ho89hqjEQBQqckZmJvu427WRaBdfsWRx7kpNtGb2Pn",
+    "metadataAddress": "DgX9Fovi79tRntsc2wVwBMQiBK3K1rh7Gs6cWe32pgN7",
     "mint": {
       "model": "mint",
-      "address": "6CK5gYG415xTPFdE1uD3iY4ReBkrN1SEUDBPm8bSnZLp",
-      "mintAuthorityAddress": "GniGiiswbPA86fL4LQkPccvJYTGGssQ4f37raGsxTHvj",
-      "freezeAuthorityAddress": "GniGiiswbPA86fL4LQkPccvJYTGGssQ4f37raGsxTHvj",
+      "address": "F7Ho89hqjEQBQqckZmJvu427WRaBdfsWRx7kpNtGb2Pn",
+      "mintAuthorityAddress": "J3gTZFZzX3kJML3aCrVEN6bYbK1TdnNb2Pn8B4EM1gTU",
+      "freezeAuthorityAddress": "J3gTZFZzX3kJML3aCrVEN6bYbK1TdnNb2Pn8B4EM1gTU",
       "decimals": 0,
       "supply": {
         "basisPoints": "01",
         "currency": {
-          "symbol": "HL_Gold",
+          "symbol": "HL_Pl",
           "decimals": 0,
           "namespace": "spl-token"
         }
       },
       "isWrappedSol": false,
       "currency": {
-        "symbol": "HL_Gold",
+        "symbol": "HL_Pl",
         "decimals": 0,
         "namespace": "spl-token"
       }
@@ -104,117 +63,7 @@
     "edition": {
       "model": "nftEdition",
       "isOriginal": true,
-      "address": "GniGiiswbPA86fL4LQkPccvJYTGGssQ4f37raGsxTHvj",
-      "supply": "00",
-      "maxSupply": "00"
-    }
-  },
-  {
-    "model": "nft",
-    "updateAuthorityAddress": "BCyDSusscFeYDjDYqH8YVD3Rvvv1Wi1vYiGnifo8trXv",
-    "json": {
-      "name": "Gold Pass #121",
-      "symbol": "HL_Gold",
-      "description": "Honeyland GOLD Pass - reserved for only the true legends in the Swarm.",
-      "seller_fee_basis_points": 500,
-      "image": "https://storage.googleapis.com/fractal-launchpad-public-assets/honeyland/passes/Gold_Pass.gif",
-      "animation_url": "https://storage.googleapis.com/fractal-launchpad-public-assets/honeyland/passes/Gold_Pass.mp4",
-      "external_url": "https://honey.land",
-      "collection": {
-        "name": "Honeyland",
-        "family": "Honeyland Pass"
-      },
-      "properties": {
-        "files": [
-          {
-            "uri": "https://storage.googleapis.com/fractal-launchpad-public-assets/honeyland/passes/Gold_Pass.gif",
-            "type": "image/gif"
-          },
-          {
-            "uri": "https://storage.googleapis.com/fractal-launchpad-public-assets/honeyland/passes/Gold_Pass.mp4",
-            "type": "video/mp4"
-          }
-        ],
-        "category": "image",
-        "creators": [
-          {
-            "address": "C2gyWTyDz6CK822hLvCMKZ5MBQRkEFjcaF8UoERrYAvy",
-            "share": 90
-          },
-          {
-            "address": "HMduKVo3A19U5EpQdEhPjo9hq9zfZXn8aGVYZp7Vc7fX",
-            "share": 10
-          }
-        ]
-      },
-      "attributes": [
-        {
-          "trait_type": "Type",
-          "value": "Gold"
-        }
-      ]
-    },
-    "jsonLoaded": true,
-    "name": "Gold Pass #121",
-    "symbol": "HL_Gold",
-    "uri": "https://storage.googleapis.com/fractal-launchpad-public-assets/honeyland/assets_gold_pass/121.json",
-    "isMutable": true,
-    "primarySaleHappened": true,
-    "sellerFeeBasisPoints": 410,
-    "editionNonce": 250,
-    "creators": [
-      {
-        "address": "GVExcmr6Bnm1qN3Q55oywzahYvwi3teJSKdxtFThFhNE",
-        "verified": true,
-        "share": 0
-      },
-      {
-        "address": "C2gyWTyDz6CK822hLvCMKZ5MBQRkEFjcaF8UoERrYAvy",
-        "verified": false,
-        "share": 90
-      },
-      {
-        "address": "HMduKVo3A19U5EpQdEhPjo9hq9zfZXn8aGVYZp7Vc7fX",
-        "verified": false,
-        "share": 10
-      }
-    ],
-    "tokenStandard": 0,
-    "collection": {
-      "verified": true,
-      "key": "CTXwXX3cbAKf9u1wwPiJei1hJKKvQxYiHagRwjvsvuzA",
-      "address": "CTXwXX3cbAKf9u1wwPiJei1hJKKvQxYiHagRwjvsvuzA"
-    },
-    "collectionDetails": null,
-    "uses": null,
-    "programmableConfig": null,
-    "address": "48Umf5ynM9hcf6G2EuZsEWk8U5ZuHHdt3V3Mbsh54bFV",
-    "metadataAddress": "8eG6h86pw6bTPD75cfzvdWtcw6GXybFwQ6DBeTTHGQb5",
-    "mint": {
-      "model": "mint",
-      "address": "48Umf5ynM9hcf6G2EuZsEWk8U5ZuHHdt3V3Mbsh54bFV",
-      "mintAuthorityAddress": "8F1SXTf8AwKspnjKqKqtGgjF1HMjPBtgN2pzoUAVoPNj",
-      "freezeAuthorityAddress": "8F1SXTf8AwKspnjKqKqtGgjF1HMjPBtgN2pzoUAVoPNj",
-      "decimals": 0,
-      "supply": {
-        "basisPoints": "01",
-        "currency": {
-          "symbol": "HL_Gold",
-          "decimals": 0,
-          "namespace": "spl-token"
-        }
-      },
-      "isWrappedSol": false,
-      "currency": {
-        "symbol": "HL_Gold",
-        "decimals": 0,
-        "namespace": "spl-token"
-      }
-    },
-    "edition": {
-      "model": "nftEdition",
-      "isOriginal": true,
-      "address": "8F1SXTf8AwKspnjKqKqtGgjF1HMjPBtgN2pzoUAVoPNj",
+      "address": "J3gTZFZzX3kJML3aCrVEN6bYbK1TdnNb2Pn8B4EM1gTU",
       "supply": "00",
       "maxSupply": "00"
     }

@@ -7,29 +7,21 @@ import {
   toMetaplexFile,
   NftWithToken,
   BigNumber,
+  Metadata,
 } from "@metaplex-foundation/js"
 import * as fs from "fs"
 import * as web3 from "@solana/web3.js";
 import { createAssociatedTokenAccount, getAssociatedTokenAddress, getOrCreateAssociatedTokenAccount } from "@solana/spl-token";
+import bs58 from "bs58";
+
+
+
 
 
 const connection = new Connection(clusterApiUrl('devnet'), 'confirmed');
 const owner = await initializeKeypair(connection);
 const pubkeey = owner.publicKey;
 console.log("pubkey", pubkeey);
-
-
-// const owner = new PublicKey('2XkU5YXArf9Rkf6jnYtenNhxbTcR2Lb6x4vQXS6MASmRiUphvJD2Q6mDnkMbHEKFz6n9qeUEo4G6cFdKmCvegmWD')
-
-// console.log('owner publickey:' , owner.publicKey.toBase58());
-
-
-// let secretKey = .from([
-//   202, 171, 192, 129, 150, 189, 204, 241, 142, 71, 205, 2, 81, 97, 2, 176, 48,
-//   81, 45, 1, 96, 138, 220, 132, 231, 131, 120, 77, 66, 40, 97, 172, 91, 245, 84,
-//   221, 157, 190, 9, 145, 176, 130, 25, 43, 72, 107, 190, 229, 75, 88, 191, 136,
-//   7, 167, 109, 91, 170, 164, 186, 15, 142, 36, 12, 23,
-// ]);
 
 
 
@@ -43,6 +35,12 @@ const metaplex = Metaplex.make(connection).use(keypairIdentity(owner)).use(bundl
 
 
 
+
+// const wallet = Keypair.fromSecretKey(
+//   bs58.decode(
+//     "3gQHgy2JZjKnS658FeyG12yN72t6d1Mw84bjr2q1zm2MhrymQYGeVyn1fNjGc4MhtDrqsxvjgaM9Rvx3UTihPxng"
+//   )
+// );
 
 
 
@@ -126,31 +124,31 @@ const metaplex = Metaplex.make(connection).use(keypairIdentity(owner)).use(bundl
 
 
 
-const file1 = fs.readFileSync('HLticketCollection.json');
-const metadata = JSON.parse(file1.toString());
+// const file1 = fs.readFileSync('HLticketCollection.json');
+// const metadata = JSON.parse(file1.toString());
 
 
 
-const { uri } = await metaplex.nfts().uploadMetadata({
-  name: "Honeyland Land Tickets",
-  symbol: "HL_TCKT",
-  description: "This collection contains in-game NFTs and SFTs for Honeyland play + own game. They have different rarities and utility to strengthen your colony and get advantages in gameplay.",
-  image: "https://arweave.net/hA8mHJDkh7qTTp2rRI8h85DbUH-eT2ucFH4rgfifkzM",
-  seller_fee_basis_points: 500 , 
-  
-});
-// const nftName = metadata[i].name; // Store the name separately
-console.log(`Metadata URI for :`, uri);
-      
+// const { uri } = await metaplex.nfts().uploadMetadata({
+//   name: "Honeyland Land Tickets",
+//   symbol: "HL_TCKT",
+//   description: "This collection contains in-game NFTs and SFTs for Honeyland play + own game. They have different rarities and utility to strengthen your colony and get advantages in gameplay.",
+//   image: "https://arweave.net/hA8mHJDkh7qTTp2rRI8h85DbUH-eT2ucFH4rgfifkzM",
+//   seller_fee_basis_points: 500 , 
+
+// });
+// // const nftName = metadata[i].name; // Store the name separately
+// console.log(`Metadata URI for :`, uri);
 
 
 
 
 
 
-// const rawData = fs.readFileSync('95landticket.json');
+
+const rawData = fs.readFileSync('twonft.json');
 // // console.log("rawdata before parse", rawData);
-// const metadata = JSON.parse(rawData.toString());
+const metadata = JSON.parse(rawData.toString());
 // console.log("data after parse", metadata);
 
 
@@ -290,45 +288,45 @@ console.log(`Metadata URI for :`, uri);
 
 
 // creating new nft with metadata
-// try {
-//   for (let i = 0; i < metadata.length; i++ ) {
-//     const {nft} = await metaplex.nfts().create(
-//       {
-//         uri: metadata[i].uri, // metadata URI(off-chain)
-//         name: metadata[i].name,
-//         symbol: metadata[i].symbol,
-//         // sellerFeeBasisPoints: metadata[i]['json']['seller_fee_basis_points']
-//         sellerFeeBasisPoints: 410, 
-//         // tokenStandard: metadata[i].tokenStandard,
-//         isMutable: true,
-//         // primarySaleHappened: metadata[i].primarySaleHappened,
-//         // maxSupply: metadata[i]['edition']['maxSupply'],
-//         // collection: new PublicKey("GABubkYhqDh45CHGKDik2JY5jXrCQEFQVyjGMFRwF7MU"),
-//         mintTokens: true,
-//       }
-//     );
-//     // await metaplex.nfts().verifyCollection(
-//     //   {
-//     //     mintAddress: nft.mint.address,
-//     //     collectionMintAddress: new PublicKey("GABubkYhqDh45CHGKDik2JY5jXrCQEFQVyjGMFRwF7MU"),
-//     //     isSizedCollection: true,
-//     //   }
-//     // );  
-//     const nftName = metadata[i].name; // Store the name separately
+try {
+  for (let i = 0; i < metadata.length; i++ ) {
+    const {nft} = await metaplex.nfts().create(
+      {
+        uri: metadata[i].uri, // metadata URI(off-chain)
+        name: metadata[i].name,
+        symbol: metadata[i].symbol,
+        // sellerFeeBasisPoints: metadata[i]['json']['seller_fee_basis_points']
+        sellerFeeBasisPoints: 410, 
+        // tokenStandard: metadata[i].tokenStandard,
+        isMutable: true,
+        // primarySaleHappened: metadata[i].primarySaleHappened,
+        // maxSupply: metadata[i]['edition']['maxSupply'],
+        // collection: new PublicKey("GABubkYhqDh45CHGKDik2JY5jXrCQEFQVyjGMFRwF7MU"),
+        mintTokens: true,
+      }
+    );
+    // await metaplex.nfts().verifyCollection(
+    //   {
+    //     mintAddress: nft.mint.address,
+    //     collectionMintAddress: new PublicKey("GABubkYhqDh45CHGKDik2JY5jXrCQEFQVyjGMFRwF7MU"),
+    //     isSizedCollection: true,
+    //   }
+    // );  
+    const nftName = metadata[i].name; // Store the name separately
 
-//     console.log(`NFT MINT FOR ${nftName}===> ${nft.address.toString()}`);
-//     // console.log(
-//     //   `NFT COLLECTION: https://explorer.solana.com/address/${nft.collection.toString()}?cluster=devnet`
-//     // );
-//     // console.log(
-//     //   `NFT METADATA: https://explorer.solana.com/address/${nft.metadataAddress.toString()}?cluster=devnet`
-//     // );
-//     // console.log(`nft mint address: ${nft.mint.address}`)
-//   };
-// } catch (error) {
-//   console.log("ERROR IN MINT");
-//   console.error(error);
-// };
+    console.log(`NFT MINT FOR ${nftName}===> ${nft.address.toString()}`);
+    // console.log(
+    //   `NFT COLLECTION: https://explorer.solana.com/address/${nft.collection.toString()}?cluster=devnet`
+    // );
+    // console.log(
+    //   `NFT METADATA: https://explorer.solana.com/address/${nft.metadataAddress.toString()}?cluster=devnet`
+    // );
+    // console.log(`nft mint address: ${nft.mint.address}`)
+  };
+} catch (error) {
+  console.log("ERROR IN MINT");
+  console.error(error);
+};
 
 
 
@@ -435,11 +433,11 @@ console.log(`Metadata URI for :`, uri);
 //   return ownerNFTs.flat();
 // };
 
-// // it returns all of pda accounts based on a program
+// it returns all of pda accounts based on a program
 // const stakeProgramId = new PublicKey("37HsMb2NSamepLG98j7MyYiB9E5tDBzsPYWVmoR32sJ2");
 
 // const accountinfo = await connection.getParsedProgramAccounts(stakeProgramId);
-// // console.log("Pdas" , accountinfo);
+// console.log("Pdas" , accountinfo);
 
 // const PdaList = accountinfo.map((account) => account.pubkey.toBase58());
 
@@ -449,6 +447,161 @@ console.log(`Metadata URI for :`, uri);
 // console.log("NFTs OWNED BY PDAs:", ownerNFTs);
 
 
+
+
+
+
+// const getNFTsNameBasedMint = async (AllmintList: string[]) => {
+//   const promises = AllmintList.map(async (mintAddress: any) => {
+//     const mint = new PublicKey(mintAddress);
+//     const mintNftslist = await metaplex.nfts().findAllByMintList({ mint });
+
+//     const result = mintNftslist.map(item => {
+//       return {
+//         name: ,
+//         mintAddress: (item as any).mintAddress
+//       };
+//     });
+//     return result;
+//   });
+
+//   const ownerNFTs = await Promise.all(promises);
+//   return ownerNFTs.flat();
+// };
+
+
+// const PdaList = accountinfo.map((account) => account.pubkey.toBase58());
+
+// console.log("PDAs OWNED BY PROGRAM:", mintList);
+
+// const ownerNFTs = await getNFTsNameBasedMint(mintList);
+// console.log("NFTs OWNED BY PDAs:", ownerNFTs);
+
+
+
+
+
+// const ownerr = new PublicKey("3SaJT58yswfjYwMkur9AmdNGntUpBy6MvCVB2oTk4tDH");
+// const nfts = await metaplex.nfts().findAllByOwner( {ownerr});
+
+
+
+// try {
+
+//   const list = fs.readFileSync('MintListTickets.json' , 'utf-8');
+//   const mintlist = JSON.parse(list);
+
+//   const getNfts = await metaplex.nfts().findAllByMintList({ mints: [mintlist] }) as Metadata[];
+
+//   const result = getNfts.map(item => {
+//     return {
+//       name: item.name,
+//       mintAddress: item.mintAddress
+//     }
+//   })
+
+// } catch (Error) {
+//   (Error);
+// }
+
+
+
+
+
+// try {
+//   const mintA = new PublicKey("Hmdo53rSurM9EVDoUfxZRFHjbMRSmCuWUEPcsgmo1WDq");
+//   const mintB = new PublicKey("9icC68yzXDEkPu9kjceCb6DGfR9z8Fe84eSxLrvrFSUG");
+//   const getNfts = await metaplex.nfts().findAllByMintList({ mints: [mintA , mintB] }) as Metadata[];
+
+//   console.log('Nfts metadata' , getNfts);
+
+// } catch (error) {
+//   console.error('Error:', error);
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// find all nft data by mint list
+// try {
+//   console.log("before reading");
+
+//   // const mintAddresses = fs.readFileSync('MintListTickets', 'utf-8');
+//   const mintAddress: PublicKey[] =
+//     [
+//       new PublicKey("5NWaskbmuxVVM61mW3jUQ71Kv4moUApMXjsD7yoVKB8o"),
+//       new PublicKey("2tW95CxWkarVhgxrPts2KQi6F91qyEgZqLtRxpWkJg2b"),
+//       new PublicKey("6b5xtvooxuW9tmHY793fQkmAMfQn6KHfPLhK9Tro2gS4"),
+//       new PublicKey("B8yaNmHL43mqu297h6FJr8UE8hQZp8KFzbTrqe2hoTd8"),
+//       new PublicKey("3NdsS3x1ZWj2P3esZG1N9LhzmecKfEg2APwvuDeCi7VF"),
+//       new PublicKey("GpSdktuW8MNsGtMuLXnT8ZrAz5rz954wMwvrRFdjrWdS"),
+//     ]
+
+
+//   console.log("after reading");
+
+//   const getNfts = await metaplex.nfts().findAllByMintList({ mints: mintAddress }) as Metadata[];
+
+//   // console.log(getNfts);
+
+//   let fileContent = '';
+//   getNfts.forEach((nft) => {
+//     fileContent += `Name: ${nft.name}\nMint Address: ${nft.mintAddress.toString()}\n\n`;
+//   });
+
+//   fs.writeFileSync('MintAndNameList4.txt', fileContent);
+
+//   console.log('NFT data written to nftData.txt file.');
+// } catch (Error) {
+//   console.error('Error:', Error);
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// console.log('nftB' , nftB);
+
+
+
+// const mintlist = ["7U9CEGcxPihWkZgR7TKGnGUPokvsK5RHaMfB11WCbqui", "3X6VJujDJMr1yfXJdt3M4ZmubGUL2GyNZ7eSvk4wQkWX"]
+
+
+// const findmintNfts = await metaplex.nfts().findAllByMintList(mintlist);
+
+
+
+
+// // Assuming you have an array of mints called 'mintList'
+// const nftList = await metaplex.nfts().findAllByMintList({
+//   mints: mintList
+// });
 
 
 
