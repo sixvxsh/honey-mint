@@ -1,0 +1,28 @@
+{
+    "name": "Honeyland Items",
+    "symbol": "HL_ITEM",
+    "description": "This collection contains in-game NFTs and SFTs for Honeyland play + own game. They have different rarities and utility to strengthen your colony and get advantages in gameplay.",
+    "seller_fee_basis_points": 500,
+    "image": "https://content.honey.land/images/collections/honeyland_items.jpg",
+    "external_url": "https://honey.land",
+    "collection": {
+      "name": "Honeyland Items",
+      "family": "Honeyland Items"
+    },
+    "properties": {
+      "files": [
+        {
+          "uri": "https://content.honey.land/images/collections/honeyland_items.jpg",
+          "type": "image/gif"
+        }
+      ],
+      "category": "image",
+      "creators": [
+              {
+          "address": "C2gyWTyDz6CK822hLvCMKZ5MBQRkEFjcaF8UoERrYAvy",
+          "share": 100,
+          "verified": true 
+        }
+      ]
+    }
+  }

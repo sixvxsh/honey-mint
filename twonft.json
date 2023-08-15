@@ -4,13 +4,13 @@
     "updateAuthorityAddress": "BCyDSusscFeYDjDYqH8YVD3Rvvv1Wi1vYiGnifo8trXv",
     "json": null,
     "jsonLoaded": true,
-    "name": "Platinum Pass #196",
+    "name": "Diamond Pass #139",
     "symbol": "HL_Pl",
-    "uri": "https://storage.googleapis.com/fractal-launchpad-public-assets/honeyland/assets_platinum_pass/196.json",
+    "uri": "https://storage.googleapis.com/fractal-launchpad-public-assets/honeyland/assets_platinum_pass/139.json",
     "isMutable": true,
     "primarySaleHappened": true,
     "sellerFeeBasisPoints": 410,
-    "editionNonce": 253,
+    "editionNonce": 254,
     "creators": [
       {
         "address": "NAJ96V7Ewqwx6M34b9njYyiX3643RSunbrRD87urAGS",
@@ -37,13 +37,13 @@
     "collectionDetails": null,
     "uses": null,
     "programmableConfig": null,
-    "address": "F7Ho89hqjEQBQqckZmJvu427WRaBdfsWRx7kpNtGb2Pn",
-    "metadataAddress": "DgX9Fovi79tRntsc2wVwBMQiBK3K1rh7Gs6cWe32pgN7",
+    "address": "4CrGG1M3cDgYqvyVwFjJZgRmQbq7SJ2xQjigfAmdTc8S",
+    "metadataAddress": "4AZaUKG174iSpTZuFKLedh2iHKKVH5S2r49KhHjyQHNK",
     "mint": {
       "model": "mint",
-      "address": "F7Ho89hqjEQBQqckZmJvu427WRaBdfsWRx7kpNtGb2Pn",
-      "mintAuthorityAddress": "J3gTZFZzX3kJML3aCrVEN6bYbK1TdnNb2Pn8B4EM1gTU",
-      "freezeAuthorityAddress": "J3gTZFZzX3kJML3aCrVEN6bYbK1TdnNb2Pn8B4EM1gTU",
+      "address": "4CrGG1M3cDgYqvyVwFjJZgRmQbq7SJ2xQjigfAmdTc8S",
+      "mintAuthorityAddress": "2TJLg9a4PiJGFoEbSFRwzGvLGpMUeT2Qr6nRQojyqaSg",
+      "freezeAuthorityAddress": "2TJLg9a4PiJGFoEbSFRwzGvLGpMUeT2Qr6nRQojyqaSg",
       "decimals": 0,
       "supply": {
         "basisPoints": "01",
@@ -63,7 +63,7 @@
     "edition": {
       "model": "nftEdition",
       "isOriginal": true,
-      "address": "J3gTZFZzX3kJML3aCrVEN6bYbK1TdnNb2Pn8B4EM1gTU",
+      "address": "2TJLg9a4PiJGFoEbSFRwzGvLGpMUeT2Qr6nRQojyqaSg",
       "supply": "00",
       "maxSupply": "00"
     }
