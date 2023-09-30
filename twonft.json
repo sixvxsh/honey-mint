@@ -2,18 +2,59 @@
   {
     "model": "nft",
     "updateAuthorityAddress": "BCyDSusscFeYDjDYqH8YVD3Rvvv1Wi1vYiGnifo8trXv",
-    "json": null,
+    "json": {
+      "name": "Gold Pass #246",
+      "symbol": "HL_Gold",
+      "description": "Honeyland GOLD Pass - reserved for only the true legends in the Swarm.",
+      "seller_fee_basis_points": 500,
+      "image": "https://storage.googleapis.com/fractal-launchpad-public-assets/honeyland/passes/Gold_Pass.gif",
+      "animation_url": "https://storage.googleapis.com/fractal-launchpad-public-assets/honeyland/passes/Gold_Pass.mp4",
+      "external_url": "https://honey.land",
+      "collection": {
+        "name": "Honeyland",
+        "family": "Honeyland Pass"
+      },
+      "properties": {
+        "files": [
+          {
+            "uri": "https://storage.googleapis.com/fractal-launchpad-public-assets/honeyland/passes/Gold_Pass.gif",
+            "type": "image/gif"
+          },
+          {
+            "uri": "https://storage.googleapis.com/fractal-launchpad-public-assets/honeyland/passes/Gold_Pass.mp4",
+            "type": "video/mp4"
+          }
+        ],
+        "category": "image",
+        "creators": [
+          {
+            "address": "C2gyWTyDz6CK822hLvCMKZ5MBQRkEFjcaF8UoERrYAvy",
+            "share": 90
+          },
+          {
+            "address": "HMduKVo3A19U5EpQdEhPjo9hq9zfZXn8aGVYZp7Vc7fX",
+            "share": 10
+          }
+        ]
+      },
+      "attributes": [
+        {
+          "trait_type": "Type",
+          "value": "Gold"
+        }
+      ]
+    },
     "jsonLoaded": true,
-    "name": "Diamond Pass #139",
-    "symbol": "HL_Pl",
-    "uri": "https://storage.googleapis.com/fractal-launchpad-public-assets/honeyland/assets_platinum_pass/139.json",
+    "name": "Gold Pass #246",
+    "symbol": "HL_Gold",
+    "uri": "https://storage.googleapis.com/fractal-launchpad-public-assets/honeyland/assets_gold_pass/246.json",
     "isMutable": true,
     "primarySaleHappened": true,
     "sellerFeeBasisPoints": 410,
     "editionNonce": 254,
     "creators": [
       {
-        "address": "NAJ96V7Ewqwx6M34b9njYyiX3643RSunbrRD87urAGS",
+        "address": "GVExcmr6Bnm1qN3Q55oywzahYvwi3teJSKdxtFThFhNE",
         "verified": true,
         "share": 0
       },
@@ -37,25 +78,25 @@
     "collectionDetails": null,
     "uses": null,
     "programmableConfig": null,
-    "address": "4CrGG1M3cDgYqvyVwFjJZgRmQbq7SJ2xQjigfAmdTc8S",
-    "metadataAddress": "4AZaUKG174iSpTZuFKLedh2iHKKVH5S2r49KhHjyQHNK",
+    "address": "4fH8CsYCYZTJqqVLcx4frFusDY5HhFAk9Ybi1ZKzafzw",
+    "metadataAddress": "3Rm9oV5Qy52mpfapp3kQDS889yxuSSjDqMEm68es2mJm",
     "mint": {
       "model": "mint",
-      "address": "4CrGG1M3cDgYqvyVwFjJZgRmQbq7SJ2xQjigfAmdTc8S",
-      "mintAuthorityAddress": "2TJLg9a4PiJGFoEbSFRwzGvLGpMUeT2Qr6nRQojyqaSg",
-      "freezeAuthorityAddress": "2TJLg9a4PiJGFoEbSFRwzGvLGpMUeT2Qr6nRQojyqaSg",
+      "address": "4fH8CsYCYZTJqqVLcx4frFusDY5HhFAk9Ybi1ZKzafzw",
+      "mintAuthorityAddress": "BiKkjVe9FacCaarEd9VPYB2XVRMRYJFRZcB4XaRL8phL",
+      "freezeAuthorityAddress": "BiKkjVe9FacCaarEd9VPYB2XVRMRYJFRZcB4XaRL8phL",
       "decimals": 0,
       "supply": {
         "basisPoints": "01",
         "currency": {
-          "symbol": "HL_Pl",
+          "symbol": "HL_Gold",
           "decimals": 0,
           "namespace": "spl-token"
         }
       },
       "isWrappedSol": false,
       "currency": {
-        "symbol": "HL_Pl",
+        "symbol": "HL_Gold",
         "decimals": 0,
         "namespace": "spl-token"
       }
@@ -63,7 +104,7 @@
     "edition": {
       "model": "nftEdition",
       "isOriginal": true,
-      "address": "2TJLg9a4PiJGFoEbSFRwzGvLGpMUeT2Qr6nRQojyqaSg",
+      "address": "BiKkjVe9FacCaarEd9VPYB2XVRMRYJFRZcB4XaRL8phL",
       "supply": "00",
       "maxSupply": "00"
     }

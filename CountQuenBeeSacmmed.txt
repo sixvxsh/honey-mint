@@ -1,0 +1,137 @@
+
+
+        QueenGen Gen1 Satisfied = 2
+        TotalGen Gen1 Queen with Random Mood  = 6
+        TotalGen Genesis Queen = 1
+        TotalGen Gen1 queen Egg  = 2
+
+
+============== There Are (2)Gen Gen1 Queen with Satisfied Mood ==================================
+
+        "name": Gen Generations #154681",
+        "mintAddress": "2AT1cQwWyyVc6zjyfUwWRfg5CyJEYUGmkMBK6HMh9bgc",
+        "Type": "Queen",
+        Gen Generation": "Gen 1",
+        "Mood": "Satisfied"
+
+
+        "name": Gen Generations #105334",
+        "mintAddress": "BEQP9jTzM7ATwEsvFnoeaqra7EHdLGPshs2PkUXS2w2T",
+        "Type": "Queen",
+        Gen Generation": "Gen 1",
+        "Mood": "Satisfied"
+
+======================= There Are (6)Gen Gen1 Queen with Random Mood =============================
+
+
+
+
+        "name": Gen Generations #138482",
+        "mintAddress": "Ai1JfPTZkwwGEbyw2ag38LGhiNEhd6qNsV4V3oTVu4EY",
+        "Type": "Queen",
+        Gen Generation": "Gen 1",
+        "Mood": "Happy"
+ 
+
+
+        "name": Gen Generations #150851",
+        "mintAddress": "DFW2DtRxM1kpv6jMUW5KN8s7oCbhECxRqGfSa2dkbZhd",
+        "Type": "Queen",
+        Gen Generation": "Gen 1",
+        "Mood": "Optimistic"
+ 
+
+
+        "name": Gen Generations #132236",
+        "mintAddress": "GyZhuwpDj4Bf8Lg4F1Gk1GY77FwQ2LCuDbnQfRP1FEQ1",
+        "Type": "Queen",
+        Gen Generation": "Gen 1",
+        "Mood": "Bored"
+
+
+  
+        "name": Gen Generations #120970",
+        "mintAddress": "H6hBMszrD3LVy5W1i6pyce6pWTEKvStRAL5nQU75j9zA",
+        "Type": "Queen",
+        Gen Generation": "Gen 1",
+        "Mood": "Frustrated"
+
+
+
+================= There is OneGen Genesis Queen ===================
+
+
+    "name": Gen Genesis #0966",
+    "mintAddress": "GsJaSusBw9athg2hKFJrTxQwzfiWEqBPZeny3HRmZscS",
+    "Type": "Queen",
+    Gen Generation": Gen Genesis",
+    "Mood": "Sad"
+
+
+============= There Are (2)Gen Gen1 Queen Egg ======================
+
+
+    "name": Gen Generations #147030",
+    "mintAddress": "5y73kcNnt2D6DU5eohtQCHFfc3yJSb9G7XoisoWsrdfS",
+    "Type": "Queen Egg",
+    Gen Generation": "Gen 1"
+
+    "name": Gen Generations #150956",
+    "mintAddress": "ArUM7pmWGra3iWnMBXvWjPyaYVekLeQWfrh9X7wXdBcy",
+    "Type": "Queen Egg",
+    Gen Generation": "Gen 1"
+
+
+
+
+==================================================
+
+There are 177 Bee with Gen 1
+There are 39 Bee with Gen 2
+There are 29 Bee with Gen 3
+There are 1 Bee with Genesis
+
+=================================
+There are 7 Bee with Excited Mood
+There are 18 Bee with Sad Mood
+There are 109 Bee with Frustrated Mood
+There are 11 Bee with Angry Mood
+There are 9 Bee with Confused Mood
+There are 7 Bee with Happy Mood
+There are 17 Bee with Calm Mood
+There are 12 Bee with Satisfied Mood
+There are 21 Bee with Anxious Mood
+There are 17 Bee with Bored Mood
+There are 12 Bee with Optimistic Mood
+There are 6 Bee with Curious Mood
+
+
+==================================
+
+There are 6 Bee with Gen 1 and Mood Excited
+There are 15 Bee with Gen 1 and Mood Sad
+There are 61 Bee with Gen 1 and Mood Frustrated
+There are 6 Bee with Gen 1 and Mood Confused
+There are 5 Bee with Gen 1 and Mood Happy
+There are 16 Bee with Gen 1 and Mood Calm
+There are 12 Bee with Gen 1 and Mood Satisfied
+There are 17 Bee with Gen 1 and Mood Anxious
+There are 15 Bee with Gen 1 and Mood Bored
+There are 8 Bee with Gen 1 and Mood Angry
+There are 10 Bee with Gen 1 and Mood Optimistic
+There are 6 Bee with Gen 1 and Mood Curious
+There are 27 Bee with Gen 2 and Mood Frustrated
+There are 3 Bee with Gen 2 and Mood Sad
+There are 1 Bee with Gen 2 and Mood Happy
+There are 1 Bee with Gen 2 and Mood Anxious
+There are 1 Bee with Gen 2 and Mood Calm
+There are 1 Bee with Gen 2 and Mood Bored
+There are 2 Bee with Gen 2 and Mood Optimistic
+There are 1 Bee with Gen 2 and Mood Excited
+There are 2 Bee with Gen 2 and Mood Confused
+There are 3 Bee with Gen 3 and Mood Angry
+There are 3 Bee with Gen 3 and Mood Anxious
+There are 21 Bee with Gen 3 and Mood Frustrated
+There are 1 Bee with Gen 3 and Mood Happy
+There are 1 Bee with Gen 3 and Mood Confused
+There are 1 Bee with Genesis and Mood Bored

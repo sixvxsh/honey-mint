@@ -48,7 +48,7 @@ function base58ToUint8Array(base58String: string | any[]) {
 
   
 
-  const address = '36T9p1GzZTQyGwbeqiKkRAHnY3uBcxRbNMcd7q7vUpmHrfPLm4vMNqLMY7QePUB5poCyGTmi33PTb1cGJK4JMkPv';
+  const address = '51mxW1V8tRiJTKTUUS3k9KRa6R9rHxUqhHHDZ7fJ8hWwMCccL3VReXhCED9hYZhVGQVCsaFbw1vpfhKykp9MvWD1';
 const bytes = base58ToUint8Array(address);
 console.log(bytes);
 
