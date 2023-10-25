@@ -26,15 +26,17 @@ import axios from 'axios'
 
 
 //  best config
-const rpcUrl = "https://aged-red-snow.solana-mainnet.quiknode.pro/fb65b51e8c315a67b87c24163f238dce6f5b46c9/";
-// const rpcUrl = "https://frosty-floral-wind.solana-devnet.quiknode.pro/fa3c7dec03be0b5335ff2905b342eedf94ada834/";
+// const rpcUrl = "https://aged-red-snow.solana-mainnet.quiknode.pro/fb65b51e8c315a67b87c24163f238dce6f5b46c9/";
+const rpcUrl = "https://frosty-floral-wind.solana-devnet.quiknode.pro/fa3c7dec03be0b5335ff2905b342eedf94ada834/";
 const connection = new Connection(rpcUrl, 'confirmed');
-const owner =  Keypair.fromSecretKey(
-  bs58.decode(
-      "51mxW1V8tRiJTKTUUS3k9KRa6R9rHxUqhHHDZ7fJ8hWwMCccL3VReXhCED9hYZhVGQVCsaFbw1vpfhKykp9MvWD1"
-  )
-);
-// const owner = await initializeKeypair(connection);
+// const owner =  Keypair.fromSecretKey(
+//   bs58.decode(
+//       "51mxW1V8tRiJTKTUUS3k9KRa6R9rHxUqhHHDZ7fJ8hWwMCccL3VReXhCED9hYZhVGQVCsaFbw1vpfhKykp9MvWD1"
+//   )
+// );
+
+//last use
+const owner = await initializeKeypair(connection);
 const pubkeey = owner.publicKey;
 console.log("pubkey", pubkeey);
 
@@ -43,19 +45,19 @@ console.log("pubkey", pubkeey);
 
 
 
-// const metaplex = Metaplex.make(connection)
-//   .use(keypairIdentity(madHoneySecret))
-//   .use(bundlrStorage());
+const metaplex = Metaplex.make(connection)
+  .use(keypairIdentity(owner))
+  .use(bundlrStorage());
 
 
 
 
-
-const metaplex = Metaplex.make(connection).use(keypairIdentity(owner)).use(bundlrStorage({
-  address: "https://devnet.bundlr.network",
-  providerUrl: "https://api.devnet.solana.com",
-  timeout: 10000,
-}))
+// last use
+// const metaplex = Metaplex.make(connection).use(keypairIdentity(owner)).use(bundlrStorage({
+//   address: "https://devnet.bundlr.network",
+//   providerUrl: "https://api.devnet.solana.com",
+//   timeout: 10000,
+// }))
 
 
 
@@ -172,9 +174,9 @@ const metaplex = Metaplex.make(connection).use(keypairIdentity(owner)).use(bundl
 
 
 
-// const rawData = fs.readFileSync('twonft.json');
-// // console.log("rawdata before parse", rawData);
-// const metadata = JSON.parse(rawData.toString());
+const rawData = fs.readFileSync('twonft.json');
+// console.log("rawdata before parse", rawData);
+const metadata = JSON.parse(rawData.toString());
 // console.log("data after parse", metadata);
 
 
@@ -314,45 +316,45 @@ const metaplex = Metaplex.make(connection).use(keypairIdentity(owner)).use(bundl
 
 
 // creating new nft with metadata
-// try {
-//   for (let i = 0; i < metadata.length; i++ ) {
-//     const {nft} = await metaplex.nfts().create(
-//       {
-//         uri: metadata[i].uri, // metadata URI(off-chain)
-//         name: metadata[i].name,
-//         symbol: metadata[i].symbol,
-//         // sellerFeeBasisPoints: metadata[i]['json']['seller_fee_basis_points']
-//         sellerFeeBasisPoints: 410, 
-//         // tokenStandard: metadata[i].tokenStandard,
-//         isMutable: true,
-//         // primarySaleHappened: metadata[i].primarySaleHappened,
-//         // maxSupply: metadata[i]['edition']['maxSupply'],
-//         // collection: new PublicKey("CEHgQXEt4FyqgTv92jwGbRZ43C14igodmLQSzhSVvFcf"),
-//         mintTokens: true,
-//       }
-//     );
-//     // await metaplex.nfts().verifyCollection(
-//     //   {
-//     //     mintAddress: nft.mint.address,
-//     //     collectionMintAddress: new PublicKey("CEHgQXEt4FyqgTv92jwGbRZ43C14igodmLQSzhSVvFcf"),
-//     //     isSizedCollection: true,
-//     //   }
-//     // );  
-//     const nftName = metadata[i].name; // Store the name separately
+try {
+  for (let i = 0; i < metadata.length; i++ ) {
+    const {nft} = await metaplex.nfts().create(
+      {
+        uri: metadata[i].uri, // metadata URI(off-chain)
+        name: metadata[i].name,
+        symbol: metadata[i].symbol,
+        // sellerFeeBasisPoints: metadata[i]['json']['seller_fee_basis_points']
+        sellerFeeBasisPoints: 410, 
+        // tokenStandard: metadata[i].tokenStandard,
+        isMutable: true,
+        // primarySaleHappened: metadata[i].primarySaleHappened,
+        // maxSupply: metadata[i]['edition']['maxSupply'],
+        // collection: new PublicKey("CEHgQXEt4FyqgTv92jwGbRZ43C14igodmLQSzhSVvFcf"),
+        mintTokens: true,
+      }
+    );
+    // await metaplex.nfts().verifyCollection(
+    //   {
+    //     mintAddress: nft.mint.address,
+    //     collectionMintAddress: new PublicKey("CEHgQXEt4FyqgTv92jwGbRZ43C14igodmLQSzhSVvFcf"),
+    //     isSizedCollection: true,
+    //   }
+    // );  
+    const nftName = metadata[i].name; // Store the name separately
 
-//     console.log(`NFT MINT FOR ${nftName}===> ${nft.address.toString()}`);
-//     // console.log(
-//     //   `NFT COLLECTION: https://explorer.solana.com/address/${nft.collection.toString()}?cluster=devnet`
-//     // );
-//     // console.log(
-//     //   `NFT METADATA: https://explorer.solana.com/address/${nft.metadataAddress.toString()}?cluster=devnet`
-//     // );
-//     // console.log(`nft mint address: ${nft.mint.address}`)
-//   };
-// } catch (error) {
-//   console.log("ERROR IN MINT");
-//   console.error(error);
-// };
+    console.log(`NFT MINT FOR ${nftName}===> ${nft.address.toString()}`);
+    // console.log(
+    //   `NFT COLLECTION: https://explorer.solana.com/address/${nft.collection.toString()}?cluster=devnet`
+    // );
+    // console.log(
+    //   `NFT METADATA: https://explorer.solana.com/address/${nft.metadataAddress.toString()}?cluster=devnet`
+    // );
+    // console.log(`nft mint address: ${nft.mint.address}`)
+  };
+} catch (error) {
+  console.log("ERROR IN MINT");
+  console.error(error);
+};
 
 
 
@@ -821,38 +823,38 @@ const metaplex = Metaplex.make(connection).use(keypairIdentity(owner)).use(bundl
 // ============================================
 
 
-const file1 = fs.readFileSync("scammed user's assets.json");
-const metadata = JSON.parse(file1.toString());
+// const file1 = fs.readFileSync("scammed user's assets.json");
+// const metadata = JSON.parse(file1.toString());
 
-function countBeeGenerationsMoods(data: any[]) {
-  const generationMoodCounts: Record<string, Record<string, number>> = {};
+// function countBeeGenerationsMoods(data: any[]) {
+//   const generationMoodCounts: Record<string, Record<string, number>> = {};
 
-  for (const item of data) {
-    const { Type, Generation, Mood } = item;
+//   for (const item of data) {
+//     const { Type, Generation, Mood } = item;
 
-    // Count Bee by Generation and Mood
-    if (Type === "Bee" && Generation && Mood) {
-      if (!generationMoodCounts[Generation]) {
-        generationMoodCounts[Generation] = {};
-      }
+//     // Count Bee by Generation and Mood
+//     if (Type === "Bee" && Generation && Mood) {
+//       if (!generationMoodCounts[Generation]) {
+//         generationMoodCounts[Generation] = {};
+//       }
 
-      if (!generationMoodCounts[Generation][Mood]) {
-        generationMoodCounts[Generation][Mood] = 1;
-      } else {
-        generationMoodCounts[Generation][Mood]++;
-      }
-    }
-  }
+//       if (!generationMoodCounts[Generation][Mood]) {
+//         generationMoodCounts[Generation][Mood] = 1;
+//       } else {
+//         generationMoodCounts[Generation][Mood]++;
+//       }
+//     }
+//   }
 
-  // Display counts for Bee by Generation and Mood
-  for (const gen in generationMoodCounts) {
-    for (const mood in generationMoodCounts[gen]) {
-      console.log(`There are ${generationMoodCounts[gen][mood]} Bee with Gen ${gen} and Mood ${mood}`);
-    }
-  }
-}
+//   // Display counts for Bee by Generation and Mood
+//   for (const gen in generationMoodCounts) {
+//     for (const mood in generationMoodCounts[gen]) {
+//       console.log(`There are ${generationMoodCounts[gen][mood]} Bee with Gen ${gen} and Mood ${mood}`);
+//     }
+//   }
+// }
 
-countBeeGenerationsMoods(metadata);
+// countBeeGenerationsMoods(metadata);
 
 
 
@@ -954,3 +956,129 @@ countBeeGenerationsMoods(metadata);
 
 // '3rBPExPFPyfj1xt6SmnDvLnV1SAd8tG7oFSuTAaGyiGX1G6SqHfwBrRRSMkk1aHjRjQvBpCpofqjf7mhkMp14TTg',
 // '6s2gAhFQceaHWnpuj2d1FKzTDpbwdefmp2hKdzs1qAaPuLUJqc9urAjAxQrXLYCuGa7w4bHnybP22kphSp9XoHe'
+
+
+
+
+
+
+
+
+
+// import {
+//   // Keypair,
+//   // PublicKey,
+//   // Connection,
+//   Transaction,
+//   sendAndConfirmTransaction,
+// } from "@solana/web3.js";
+// import {
+//   createAccount,
+//   createMint,
+//   mintTo,
+//   TOKEN_PROGRAM_ID
+// } from "@solana/spl-token";
+// import {
+//   PROGRAM_ID,
+//   CreateMetadataAccountArgsV3,
+//   createCreateMetadataAccountV3Instruction,
+//   createCreateMasterEditionV3Instruction,
+//   createSetCollectionSizeInstruction,
+// } from "@metaplex-foundation/mpl-token-metadata";
+
+// const createCollection = async (connection: Connection, payer: Keypair, metadata: CreateMetadataAccountArgsV3) => {
+//   // Set the mint and freeze authorities to the payer.publicKey
+//   // We also set the decimals to zero since NFTs are non-fungible
+//   const mint = await createMint(connection, payer, payer.publicKey, payer.publicKey, 0);
+
+//   const tokenAccount = await createAccount(connection, payer, mint, payer.publicKey);
+
+//   // Mint 1 NFT with no multiSigners
+//   const mintTxtSignature = await mintTo(connection, payer, mint, tokenAccount, payer, 1, [], undefined, TOKEN_PROGRAM_ID);
+//   console.log(`Minted 1 NFT: ${mintTxtSignature}`);
+
+//   // Derive the PDA for the metadata account
+//   const [metadataAccount, _bump] = PublicKey.findProgramAddressSync(
+//     [Buffer.from("metadata", "utf8"), PROGRAM_ID.toBuffer(), mint.toBuffer()],
+//     PROGRAM_ID
+//   );
+//   console.log("Metadata account:", metadataAccount.toBase58());
+
+//   /*
+//     Instruction for the metadata account
+
+//     This account holds information about the NFT, which is useful for providing contextual info about the token
+//   */
+//   const createMetadataInstruction = createCreateMetadataAccountV3Instruction(
+//     {
+//       metadata: metadataAccount,
+//       mint: mint,
+//       mintAuthority: payer.publicKey,
+//       payer: payer.publicKey,
+//       updateAuthority: payer.publicKey,
+//     },
+//     {
+//       createMetadataAccountArgsV3: metadata,
+//     }
+//   );
+
+//   // Derive the PDA for the master edition account
+//   const [masterEditionAccount] = PublicKey.findProgramAddressSync(
+//     [Buffer.from("metadata", "utf8"), PROGRAM_ID.toBuffer(), mint.toBuffer(), Buffer.from("edition", "utf8")],
+//     PROGRAM_ID
+//   );
+//   console.log("Master edition account:", masterEditionAccount.toBase58());
+
+//   /*
+//     Instruction for the master edition account
+
+//     This account holds additional data and allows the creation of limited editions
+//   */
+//   const createMasterEditionInstruction = createCreateMasterEditionV3Instruction(
+//     {
+//       edition: masterEditionAccount,
+//       mint: mint,
+//       mintAuthority: payer.publicKey,
+//       payer: payer.publicKey,
+//       updateAuthority: payer.publicKey,
+//       metadata: metadataAccount,
+//     },
+//     {
+//       createMasterEditionArgs: {
+//         maxSupply: 0,
+//       },
+//     }
+//   );
+
+//   // Instruction for the collection size
+//   const collectionSizeInstruction = createSetCollectionSizeInstruction(
+//     {
+//       collectionMetadata: metadataAccount,
+//       collectionAuthority: payer.publicKey,
+//       collectionMint: mint,
+//     },
+//     {
+//       setCollectionSizeArgs: { size: 100 },
+//     }
+//   );
+
+//   try {
+//     const tx = new Transaction()
+//       .add(createMetadataInstruction)
+//       .add(createMasterEditionInstruction)
+//       .add(collectionSizeInstruction);
+
+//     // Setting as the payer the feePayer
+//     tx.feePayer = payer.publicKey;
+
+//     const txtSignature = await sendAndConfirmTransaction(connection, tx, [payer], {
+//       commitment: "confirmed",
+//       skipPreflight: true,
+//     });
+
+//     console.log(`Successfully created a collection with the txt sig: ${txtSignature}`);
+//   } catch (err) {
+//     console.error(`Failed to create collection with error: ${err}`);
+//   }
+// };
+
